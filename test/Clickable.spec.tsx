@@ -12,3 +12,36 @@ it('should handle mouse events', async () => {
 	await userEvent.click(button);
 	expect(onTrigger).toBeCalledTimes(1);
 });
+
+it('should handle keyboard events', async () => {
+	const toggle = jest.fn();
+	const trigger = jest.fn();
+	render(
+		<>
+			<Clickable component="span" role="checkbox" onTrigger={toggle}>
+				<div>a</div>
+			</Clickable>
+			<Clickable component="li" role="menuitem" onTrigger={trigger}>
+				<div>b</div>
+			</Clickable>
+		</>,
+	);
+	const checkbox = screen.getByRole('checkbox', { name: 'a' });
+	expect(checkbox.tagName).toBe('SPAN');
+
+	const menuitem = screen.getByRole('menuitem', { name: 'b' });
+	expect(menuitem.tagName).toBe('LI');
+
+	await userEvent.tab();
+	expect(checkbox).toBe(document.activeElement);
+	expect(menuitem).not.toBe(document.activeElement);
+
+	await userEvent.keyboard('{ }');
+	expect(toggle).toBeCalledTimes(1);
+	expect(trigger).toBeCalledTimes(0);
+
+	await userEvent.tab();
+	await userEvent.keyboard('{enter}');
+	expect(toggle).toBeCalledTimes(1);
+	expect(trigger).toBeCalledTimes(1);
+});
