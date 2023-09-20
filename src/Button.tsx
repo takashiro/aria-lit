@@ -2,13 +2,30 @@ import React from 'react';
 
 export type TriggerEvent<T> = React.MouseEvent<T> | React.KeyboardEvent<T>;
 
-export interface ClickableProps<T> extends React.HTMLAttributes<T> {
-    component?: React.ElementType;
-    onTrigger(e: TriggerEvent<T>): void;
+export interface ButtonProps<T> extends React.HTMLAttributes<T> {
+	/**
+	 * The component used to implement this `button` element.
+	 */
+	component?: React.ElementType;
+
+	/**
+	 * An event handler to be called when the element is clicked or triggered by keyboard.
+	 * @param e mouse or keyboard event.
+	 */
+	onTrigger(e: TriggerEvent<T>): void;
+
+	/**
+	 * Keys to trigger the element. (Default: Space or Enter).
+	 */
 	keys?: string[];
 }
 
-export default function Clickable<T extends HTMLElement = HTMLDivElement>({
+/**
+ * This is a [button](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+ *
+ * It is used to implement custom buttons with keyboard support.
+ */
+export default function Button<T extends HTMLElement = HTMLDivElement>({
 	component: Component = 'div',
 	role = 'button',
 	tabIndex = 0,
@@ -18,7 +35,7 @@ export default function Clickable<T extends HTMLElement = HTMLDivElement>({
 	onKeyDown,
 	children,
 	...otherProps
-}: ClickableProps<T>): JSX.Element {
+}: ButtonProps<T>): JSX.Element {
 	const handleClick = (e: React.MouseEvent<T>): void => {
 		onTrigger(e);
 		onClick?.(e);

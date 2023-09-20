@@ -3,11 +3,11 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Clickable from '../src/Clickable';
+import Button from '../src/Button';
 
 it('should handle mouse events', async () => {
 	const onTrigger = jest.fn();
-	render(<Clickable onTrigger={onTrigger}>Click me!</Clickable>);
+	render(<Button onTrigger={onTrigger}>Click me!</Button>);
 	const button = screen.getByRole('button', { name: 'Click me!' });
 	await userEvent.click(button);
 	expect(onTrigger).toBeCalledTimes(1);
@@ -18,12 +18,12 @@ it('should handle keyboard events', async () => {
 	const trigger = jest.fn();
 	render(
 		<>
-			<Clickable component="span" role="checkbox" onTrigger={toggle}>
+			<Button component="span" role="checkbox" onTrigger={toggle}>
 				<div>a</div>
-			</Clickable>
-			<Clickable component="li" role="menuitem" onTrigger={trigger}>
+			</Button>
+			<Button component="li" role="menuitem" onTrigger={trigger}>
 				<div>b</div>
-			</Clickable>
+			</Button>
 		</>,
 	);
 	const checkbox = screen.getByRole('checkbox', { name: 'a' });
