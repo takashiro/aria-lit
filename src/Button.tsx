@@ -4,7 +4,7 @@ export type TriggerEvent<T> = React.MouseEvent<T> | React.KeyboardEvent<T>;
 
 export interface ButtonProps<T> extends React.HTMLAttributes<T> {
 	/**
-	 * The component used to implement this `button` element.
+	 * The component used to implement this `button` element. (Default: `div`)
 	 */
 	component?: React.ElementType;
 
