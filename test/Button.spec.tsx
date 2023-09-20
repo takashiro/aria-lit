@@ -45,3 +45,15 @@ it('should handle keyboard events', async () => {
 	expect(toggle).toBeCalledTimes(1);
 	expect(trigger).toBeCalledTimes(1);
 });
+
+it('does not handle events if disabled', async () => {
+	const trigger = jest.fn();
+	render(<Button onTrigger={trigger} disabled>Test</Button>);
+	const button = screen.getByRole('button', { name: 'Test' });
+
+	await userEvent.tab();
+	expect(button).not.toBe(document.activeElement);
+
+	await userEvent.click(button);
+	expect(trigger).not.toBeCalled();
+});

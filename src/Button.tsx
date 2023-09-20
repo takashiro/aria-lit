@@ -15,6 +15,11 @@ export interface ButtonProps<T> extends React.HTMLAttributes<T> {
 	onTrigger(e: TriggerEvent<T>): void;
 
 	/**
+	 * Whether the button is disabled.
+	 */
+	disabled?: boolean;
+
+	/**
 	 * Keys to trigger the element. (Default: Space or Enter).
 	 */
 	keys?: string[];
@@ -30,6 +35,7 @@ export default function Button<T extends HTMLElement = HTMLDivElement>({
 	role = 'button',
 	tabIndex = 0,
 	onTrigger,
+	disabled,
 	keys = [' ', 'Enter'],
 	onClick,
 	onKeyDown,
@@ -51,9 +57,9 @@ export default function Button<T extends HTMLElement = HTMLDivElement>({
 	return (
 		<Component
 			role={role}
-			tabIndex={tabIndex}
-			onClick={handleClick}
-			onKeyDown={handleKeyDown}
+			tabIndex={disabled ? -1 : tabIndex}
+			onClick={disabled ? undefined : handleClick}
+			onKeyDown={disabled ? undefined : handleKeyDown}
 			{...otherProps}
 		>
 			{children}
