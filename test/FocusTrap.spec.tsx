@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	jest,
 	describe,
 	expect,
 	it,
@@ -12,9 +13,11 @@ import userEvent from '@testing-library/user-event';
 import FocusTrap from '../src/FocusTrap';
 
 describe('Normal Focus Trap', () => {
+	const onEscape = jest.fn();
+
 	beforeAll(() => {
 		render(
-			<FocusTrap>
+			<FocusTrap onEscape={onEscape}>
 				<button type="button">Native Button</button>
 				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 				<a id="anchor">Page Anchor</a>
@@ -83,6 +86,11 @@ describe('Normal Focus Trap', () => {
 		await userEvent.tab({ shift: true });
 		const username = screen.getByRole('textbox', { name: 'User Name' });
 		expect(username).toBe(document.activeElement);
+	});
+
+	it('should handle Esc key', async () => {
+		await userEvent.keyboard('{escape}');
+		expect(onEscape).toBeCalledTimes(1);
 	});
 
 	it('should go back to link', async () => {

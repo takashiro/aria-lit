@@ -34,6 +34,14 @@ interface FocusTrapProps<T> extends React.HTMLAttributes<T> {
 	 * By default, it looks for all built-in elements and those with proper `tabindex`.
 	 */
 	pattern?: string;
+
+	/**
+	 * This is called when `Esc` key is pressed.
+	 * The callback should move focus to the trigger element.
+	 *
+	 * @param e keyboard event.
+	 */
+	onEscape?(e: React.KeyboardEvent<T>): void;
 }
 
 /**
@@ -45,6 +53,7 @@ interface FocusTrapProps<T> extends React.HTMLAttributes<T> {
 export default function FocusTrap<T extends HTMLElement = HTMLDivElement>({
 	component: Component = 'div',
 	pattern = defaultPattern,
+	onEscape,
 	children,
 	onKeyDown,
 	...otherProps
@@ -52,12 +61,16 @@ export default function FocusTrap<T extends HTMLElement = HTMLDivElement>({
 	const me = React.useRef<T>(null);
 
 	const handleKeyDown = (e: React.KeyboardEvent<T>) => {
-		if (e.key === 'Tab' && !e.ctrlKey && !e.altKey && !e.metaKey) {
-			const elements = findInteractiveElements(e.currentTarget, pattern);
-			const next = moveFocus(elements, e.target, e.shiftKey);
-			if (next) {
-				e.preventDefault();
-				setTimeout(() => next.focus(), 0);
+		if (!e.ctrlKey && !e.altKey && !e.metaKey) {
+			if (e.key === 'Tab') {
+				const elements = findInteractiveElements(e.currentTarget, pattern);
+				const next = moveFocus(elements, e.target, e.shiftKey);
+				if (next) {
+					e.preventDefault();
+					setTimeout(() => next.focus(), 0);
+				}
+			} else if (e.key === 'Escape') {
+				onEscape?.(e);
 			}
 		}
 		onKeyDown?.(e);
