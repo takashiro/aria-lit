@@ -1,12 +1,9 @@
 import React from 'react';
 
+import findElements from './util/findElements';
+
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
 const defaultPattern = interactives.map((selector) => `${selector}:not([tabindex="-1"])`).join(', ');
-
-const findInteractiveElements = (container: HTMLElement, pattern: string): HTMLElement[] => {
-	const elements = container.querySelectorAll(pattern);
-	return [...elements].filter((e) => e instanceof HTMLElement) as HTMLElement[];
-};
 
 const moveFocus = (
 	elements: HTMLElement[],
@@ -63,7 +60,7 @@ export default function FocusTrap<T extends HTMLElement = HTMLDivElement>({
 	const handleKeyDown = (e: React.KeyboardEvent<T>) => {
 		if (!e.ctrlKey && !e.altKey && !e.metaKey) {
 			if (e.key === 'Tab') {
-				const elements = findInteractiveElements(e.currentTarget, pattern);
+				const elements = findElements(e.currentTarget, pattern);
 				const next = moveFocus(elements, e.target, e.shiftKey);
 				if (next) {
 					e.preventDefault();
@@ -78,7 +75,7 @@ export default function FocusTrap<T extends HTMLElement = HTMLDivElement>({
 
 	React.useEffect(() => {
 		const container = me.current as HTMLElement;
-		const [first] = findInteractiveElements(container, pattern);
+		const [first] = findElements(container, pattern);
 		first?.focus();
 	}, []);
 
