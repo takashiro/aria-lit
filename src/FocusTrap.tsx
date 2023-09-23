@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type BasicProps from './common/BasicProps';
 import findElements from './util/findElements';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
@@ -19,12 +20,7 @@ const moveFocus = (
 	}
 };
 
-interface FocusTrapProps<T> extends React.HTMLAttributes<T> {
-	/**
-	 * The component used to implement this focus trap. (Default: `div`)
-	 */
-	component?: React.ElementType;
-
+interface FocusTrapProps<T> extends BasicProps, React.HTMLAttributes<T> {
 	/**
 	 * A CSS selector to find all interactive elements inside.
 	 *

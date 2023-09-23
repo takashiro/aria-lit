@@ -1,13 +1,10 @@
 import React from 'react';
 
+import type BasicProps from './common/BasicProps';
+
 export type TriggerEvent<T> = React.MouseEvent<T> | React.KeyboardEvent<T>;
 
-export interface ButtonProps<T> extends React.HTMLAttributes<T> {
-	/**
-	 * The component used to implement this `button` element. (Default: `div`)
-	 */
-	component?: React.ElementType;
-
+export interface ButtonProps<T> extends BasicProps, React.HTMLAttributes<T> {
 	/**
 	 * An event handler to be called when the element is clicked or triggered by keyboard.
 	 * @param e mouse or keyboard event.
