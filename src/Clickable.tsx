@@ -6,6 +6,11 @@ export type TriggerEvent<T> = React.MouseEvent<T> | React.KeyboardEvent<T>;
 
 export interface ClickableProps<T> extends BasicProps, React.HTMLAttributes<T> {
 	/**
+	 * ARIA role, usually `button`, `radio`, `checkbox`, `menuitem`, etc.
+	 */
+	role: string;
+
+	/**
 	 * An event handler to be called when the element is clicked or triggered by keyboard.
 	 * @param e mouse or keyboard event.
 	 */
@@ -29,7 +34,6 @@ export interface ClickableProps<T> extends BasicProps, React.HTMLAttributes<T> {
  */
 export default function Clickable<T extends HTMLElement = HTMLDivElement>({
 	component: Component = 'div',
-	role = 'button',
 	tabIndex = 0,
 	onTrigger,
 	disabled,
@@ -53,7 +57,6 @@ export default function Clickable<T extends HTMLElement = HTMLDivElement>({
 
 	return (
 		<Component
-			role={role}
 			tabIndex={disabled ? -1 : tabIndex}
 			onClick={disabled ? undefined : handleClick}
 			onKeyDown={disabled ? undefined : handleKeyDown}

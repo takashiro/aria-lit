@@ -7,7 +7,7 @@ import Clickable from '../src/Clickable';
 
 it('should handle mouse events', async () => {
 	const onTrigger = jest.fn();
-	render(<Clickable onTrigger={onTrigger}>Click me!</Clickable>);
+	render(<Clickable role="button" onTrigger={onTrigger}>Click me!</Clickable>);
 	const button = screen.getByRole('button', { name: 'Click me!' });
 	await userEvent.click(button);
 	expect(onTrigger).toBeCalledTimes(1);
@@ -48,7 +48,7 @@ it('should handle keyboard events', async () => {
 
 it('does not handle events if disabled', async () => {
 	const trigger = jest.fn();
-	render(<Clickable onTrigger={trigger} disabled>Test</Clickable>);
+	render(<Clickable role="button" onTrigger={trigger} disabled>Test</Clickable>);
 	const button = screen.getByRole('button', { name: 'Test' });
 
 	await userEvent.tab();
