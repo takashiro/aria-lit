@@ -3,11 +3,11 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Button from '../src/Button';
+import Clickable from '../src/Clickable';
 
 it('should handle mouse events', async () => {
 	const onTrigger = jest.fn();
-	render(<Button onTrigger={onTrigger}>Click me!</Button>);
+	render(<Clickable onTrigger={onTrigger}>Click me!</Clickable>);
 	const button = screen.getByRole('button', { name: 'Click me!' });
 	await userEvent.click(button);
 	expect(onTrigger).toBeCalledTimes(1);
@@ -18,12 +18,12 @@ it('should handle keyboard events', async () => {
 	const trigger = jest.fn();
 	render(
 		<>
-			<Button component="span" role="checkbox" onTrigger={toggle}>
+			<Clickable component="span" role="checkbox" onTrigger={toggle}>
 				<div>a</div>
-			</Button>
-			<Button component="li" role="menuitem" onTrigger={trigger}>
+			</Clickable>
+			<Clickable component="li" role="menuitem" onTrigger={trigger}>
 				<div>b</div>
-			</Button>
+			</Clickable>
 		</>,
 	);
 	const checkbox = screen.getByRole('checkbox', { name: 'a' });
@@ -48,12 +48,16 @@ it('should handle keyboard events', async () => {
 
 it('does not handle events if disabled', async () => {
 	const trigger = jest.fn();
-	render(<Button onTrigger={trigger} disabled>Test</Button>);
+	render(<Clickable onTrigger={trigger} disabled>Test</Clickable>);
 	const button = screen.getByRole('button', { name: 'Test' });
 
 	await userEvent.tab();
 	expect(button).not.toBe(document.activeElement);
 
 	await userEvent.click(button);
+	expect(trigger).not.toBeCalled();
+
+	button.focus();
+	await userEvent.keyboard('{enter}');
 	expect(trigger).not.toBeCalled();
 });
