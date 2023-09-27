@@ -27,6 +27,8 @@ export interface ClickableProps<T> extends BasicProps, React.HTMLAttributes<T> {
 	keys?: string[];
 }
 
+export type GenericClickableProps<T> = Omit<ClickableProps<T>, 'role' | 'keys'>;
+
 /**
  * This is a clickable element.
  *

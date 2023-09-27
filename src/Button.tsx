@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Clickable, { type ClickableProps } from './Clickable';
-
-type ButtonProps<T> = Omit<ClickableProps<T>, 'role' | 'keys'>;
+import Clickable, { type GenericClickableProps } from './Clickable';
 
 /**
  * [Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
@@ -14,7 +12,7 @@ type ButtonProps<T> = Omit<ClickableProps<T>, 'role' | 'keys'>;
  * to append "…" (ellipsis) to the button label, e.g., "Save as…".
  */
 export default function Button<T extends HTMLElement = HTMLDivElement>(
-	props: ButtonProps<T>,
+	props: GenericClickableProps<T>,
 ): JSX.Element {
 	return <Clickable<T> role="button" {...props} />;
 }
