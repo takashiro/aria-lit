@@ -121,4 +121,25 @@ describe('Customized Radio Group', () => {
 
 		cleanup();
 	});
+
+	it('renders icon radios', () => {
+		render(
+			<>
+				<div id="my-radio">My Radio</div>
+				<RadioGroup<string> selected="b" aria-labelledby="my-radio">
+					<Radio<string> value="a" aria-label="Option 1" />
+					<Radio<string> value="b" aria-labelledby="option-2" />
+				</RadioGroup>
+				<div id="option-2">Option 2</div>
+			</>,
+		);
+
+		const a = screen.getByRole('radio', { name: 'Option 1' });
+		expect(a).not.toBeChecked();
+
+		const b = screen.getByRole('radio', { name: 'Option 2' });
+		expect(b).toBeChecked();
+
+		cleanup();
+	});
 });
