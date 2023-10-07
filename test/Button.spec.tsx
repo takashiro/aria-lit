@@ -3,14 +3,19 @@ import {
 	describe,
 	expect,
 	it,
+	afterEach,
 } from '@jest/globals';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react/pure';
 import userEvent from '@testing-library/user-event';
 
 import Button from '../src/Button';
 
 describe('Button', () => {
+	afterEach(() => {
+		cleanup();
+	});
+
 	it('can be triggered by mouse event', async () => {
 		const onTrigger = jest.fn();
 		render(<Button onTrigger={onTrigger}>Click me!</Button>);

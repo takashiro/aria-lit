@@ -6,4 +6,5 @@ module.exports = {
 		'<rootDir>/node_modules/',
 		'<rootDir>/test/',
 	],
+	injectGlobals: false,
 };
