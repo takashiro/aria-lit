@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type BasicProps from './common/BasicProps';
-import findElements from './util/findElements';
+import findElements from './dom/findElements';
 
 type Orientation = 'portrait' | 'landscape';
 
