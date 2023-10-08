@@ -3,55 +3,53 @@ import React from 'react';
 import Clickable, { type GenericClickableProps } from './Clickable';
 import useChecked from './hooks/useChecked';
 
-type CheckedState = React.AriaAttributes['aria-checked'];
-
 export interface ChangeEvent<T> extends React.ChangeEvent<T> {
 	/**
-	 * Whether the checkbox is checked.
+	 * Whether the switch is on.
 	 */
-	checked: CheckedState;
+	checked: boolean;
 }
 
-interface CheckboxProps<T> extends Omit<GenericClickableProps<T>, 'onTrigger' | 'defaultChecked' | 'checked'> {
+interface SwitchProps<T> extends Omit<GenericClickableProps<T>, 'onTrigger' | 'defaultChecked' | 'checked'> {
 	/**
-	 * Checked state.
+	 * Whether the switch is on.
 	 *
 	 * This creates a controlled component.
 	 */
-	checked?: CheckedState;
+	checked?: boolean;
 
 	/**
-	 * Default checked state.
+	 * Whether the switch is on by default.
 	 *
 	 * If `checked` is not defined, it creates an uncontrolled component.
 	 */
-	defaultChecked?: CheckedState;
+	defaultChecked?: boolean;
 
 	/**
-	 * This is fired when the checkbox is toggled.
+	 * This is fired when the switch is toggled.
 	 * @param e change event
 	 */
 	onChange(e: ChangeEvent<T>): void;
 }
 
 /**
- * [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
+ * [Switch](https://www.w3.org/WAI/ARIA/apg/patterns/switch/)
  *
- * A checkable input that has three possible values: true, false, or mixed.
+ * A switch is an input widget that allows users to choose one of two values: on or off.
  */
-export default function Checkbox<T extends HTMLElement = HTMLDivElement>({
+export default function Switch<T extends HTMLElement = HTMLDivElement>({
 	defaultChecked,
 	checked,
 	onChange,
 	...otherProps
-}: CheckboxProps<T>): JSX.Element {
+}: SwitchProps<T>): JSX.Element {
 	const [value, toggle] = useChecked({ defaultChecked, checked, onChange });
+
 	return (
 		<Clickable<T>
-			role="checkbox"
+			role="switch"
 			onTrigger={toggle}
 			aria-checked={value}
-			keys={[' ']}
 			{...otherProps}
 		/>
 	);
