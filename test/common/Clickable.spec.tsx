@@ -3,7 +3,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Clickable from '../src/Clickable';
+import Clickable from '../../src/common/Clickable';
 
 it('should handle mouse events', async () => {
 	const onTrigger = jest.fn();

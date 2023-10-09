@@ -9,7 +9,7 @@ import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react/pure';
 import userEvent from '@testing-library/user-event';
 
-import FocusList from '../src/FocusList';
+import FocusList from '../../src/common/FocusList';
 
 describe('Normal Focus List', () => {
 	let a: HTMLElement;

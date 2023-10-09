@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type BasicProps from './common/BasicProps';
+import type BasicProps from './BasicProps';
 
 export type TriggerEvent<T> = React.MouseEvent<T> | React.KeyboardEvent<T>;
 

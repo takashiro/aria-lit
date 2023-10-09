@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { type TriggerEvent } from '../Clickable';
+import { type TriggerEvent } from '../common/Clickable';
 
 type CheckedState = React.AriaAttributes['aria-checked'];
 

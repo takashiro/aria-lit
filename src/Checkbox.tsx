@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Clickable, { type GenericClickableProps } from './Clickable';
+import Clickable, { type GenericClickableProps } from './common/Clickable';
 import useChecked from './hooks/useChecked';
 
 type CheckedState = React.AriaAttributes['aria-checked'];

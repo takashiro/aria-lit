@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Clickable, { type GenericClickableProps } from './Clickable';
+import Clickable, { type GenericClickableProps } from './common/Clickable';
 
 /**
  * [Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/)

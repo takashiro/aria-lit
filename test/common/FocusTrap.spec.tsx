@@ -10,7 +10,7 @@ import {
 import { render, screen, cleanup } from '@testing-library/react/pure';
 import userEvent from '@testing-library/user-event';
 
-import FocusTrap from '../src/FocusTrap';
+import FocusTrap from '../../src/common/FocusTrap';
 
 describe('Normal Focus Trap', () => {
 	const onEscape = jest.fn();

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Clickable, { type GenericClickableProps } from './Clickable';
+import Clickable, { type GenericClickableProps } from './common/Clickable';
 import useChecked from './hooks/useChecked';
 
 export interface ChangeEvent<T> extends React.ChangeEvent<T> {

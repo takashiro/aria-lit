@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Clickable, { type GenericClickableProps } from './Clickable';
+import Clickable, { type GenericClickableProps } from './common/Clickable';
 import useChecked, { type ChangeEvent as CheckedChangeEvent } from './hooks/useChecked';
 
 type PressedState = React.HTMLAttributes<HTMLElement>['aria-pressed'];

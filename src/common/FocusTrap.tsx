@@ -1,7 +1,7 @@
 import React from 'react';
 
-import type BasicProps from './common/BasicProps';
-import findElements from './dom/findElements';
+import type BasicProps from './BasicProps';
+import findElements from '../dom/findElements';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
 const defaultPattern = interactives.map((selector) => `${selector}:not([tabindex="-1"])`).join(', ');
