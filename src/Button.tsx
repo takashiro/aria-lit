@@ -3,6 +3,9 @@ import React from 'react';
 import Clickable, { type GenericClickableProps } from './common/Clickable';
 
 /**
+ * **Important**: For normal buttons, please use `<button>` instead.
+ * This is usually for icon buttons only.
+ *
  * [Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
  * is a widget that enables users to trigger an action or event,
  * such as submitting a form, opening a dialog, canceling an action,
