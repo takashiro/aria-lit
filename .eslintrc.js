@@ -4,7 +4,6 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		'airbnb',
 		'plugin:@typescript-eslint/recommended',
 	],
 	parser: '@typescript-eslint/parser',
@@ -17,44 +16,13 @@ module.exports = {
 	],
 	rules: {
 		'consistent-return': 'off',
-		'import/extensions': [
-			'error',
-			{
-				ts: 'never',
-				tsx: 'never',
-				js: 'never',
-				jsx: 'never',
-			},
-		],
 		'import/no-unresolved': 'off',
 		indent: [
 			'error',
 			'tab',
 		],
-		'jsx-a11y/label-has-associated-control': [
-			'error',
-			{
-				assert: 'either',
-			},
-		],
 		'linebreak-style': 'off',
 		'no-await-in-loop': 'off',
-		'react/jsx-indent': [
-			'error',
-			'tab',
-		],
-		'react/jsx-indent-props': [
-			'error',
-			'tab',
-		],
-		'react/jsx-filename-extension': [
-			'error',
-			{
-				extensions: ['.tsx'],
-			},
-		],
-		'react/jsx-props-no-spreading': 'off',
-		'react/require-default-props': 'off',
 		'no-plusplus': 'off',
 		'no-redeclare': 'off',
 		'no-restricted-syntax': [
