@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type BasicProps from './common/BasicProps';
-import Clickable, { type ClickableProps } from './common/Clickable';
+import Clickable, { type ClickableProps } from './Clickable';
 import FocusList from './common/FocusList';
 
 interface RadioProps<V, T> extends Omit<ClickableProps<T>, 'role' | 'onTrigger'> {

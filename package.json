@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "description": "Commonly used components with no CSS styles",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "wds --node-resolve --open --watch",
     "build": "tsc",
     "clean": "rimraf dist",
-    "test": "npm run lint",
-    "lint": "eslint --ext=ts,js .",
-    "jest": "jest --coverage"
+    "test": "npm run lint && wtr",
+    "lint": "eslint --ext=ts,js ."
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,21 @@
   },
   "homepage": "https://github.com/takashiro/aria-lit#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2",
-    "eslint": "^8.49.0",
-    "rimraf": "^5.0.1",
-    "ts-jest": "^29.1.1",
+    "@open-wc/testing": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "@web/dev-server": "^0.3.3",
+    "@web/dev-server-esbuild": "^0.4.1",
+    "@web/dev-server-storybook": "^1.0.6",
+    "@web/test-runner": "^0.17.2",
+    "@web/test-runner-puppeteer": "^0.14.0",
+    "eslint": "^8.51.0",
+    "rimraf": "^5.0.5",
+    "sinon": "^16.1.0",
+    "ts-lit-plugin": "^1.2.1",
     "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "lit": "^3.0.0"
   }
 }
