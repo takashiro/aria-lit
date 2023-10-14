@@ -5,6 +5,7 @@ module.exports = {
 	},
 	extends: [
 		'plugin:@typescript-eslint/recommended',
+		'plugin:storybook/recommended',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
