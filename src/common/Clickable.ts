@@ -1,7 +1,3 @@
-import { LitElement, TemplateResult, css, html } from 'lit';
-import { property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
-
 export interface ClickableProps {
 	/**
 	 * Whether the clickable element is disabled.
@@ -12,45 +8,50 @@ export interface ClickableProps {
 /**
  * A clickable element, used to implement buttons, checkboxes or anything can be clicked.
  */
-export class Clickable extends LitElement implements ClickableProps {
-	@property({ type: Boolean }) disabled?: boolean;
+export class Clickable extends HTMLElement implements ClickableProps {
+	disabled?: boolean;
 
-	static styles = css`
-		.clickable {
-			cursor: pointer;
-		}
-
-		.clickable[aria-disabled='true'] {
-			cursor: not-allowed;
-		}
-	`;
-
-	override render(): TemplateResult<1> {
-		const tabIndex = this.disabled ? -1 : 0;
-		return html`
-			<div class="clickable" role=${ifDefined(this.role)} tabindex=${tabIndex} @click=${this.#handleClick} @keydown=${this.#handleKeyDown} aria-disabled=${ifDefined(this.disabled)}>
-				<slot></slot>
-			</div>
-		`;
+	connectedCallback(): void {
+		this.#init();
+		this.addEventListener('click', this.#handleClick);
+		this.addEventListener('keydown', this.#handleKeyDown);
 	}
 
-	#handleClick(e: MouseEvent): void {
+	disconnectedCallback(): void {
+		this.removeEventListener('keydown', this.#handleKeyDown);
+		this.addEventListener('click', this.#handleClick);
+	}
+
+	#init() {
 		if (this.disabled) {
-			e.preventDefault();
-			e.stopPropagation();
+			this.ariaDisabled = 'true';
+		} else if (!this.getAttribute('tabindex')) {
+			this.tabIndex = 0;
 		}
 	}
 
-	#handleKeyDown(e: KeyboardEvent): void {
+	#handleClick = (): void => {
+		if (this.disabled) {
+			return;
+		}
+
+		this.#trigger();
+	}
+
+	#handleKeyDown = (e: KeyboardEvent): void => {
 		if (this.disabled || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
 			return;
 		}
 
 		if ([' ', 'Enter'].includes(e.key)) {
-			this.dispatchEvent(new MouseEvent('click', {
-				bubbles: true,
-				composed: true,
-			}));
+			this.#trigger();
 		}
+	}
+
+	#trigger(): void {
+		this.dispatchEvent(new MouseEvent('trigger', {
+			bubbles: true,
+			composed: true,
+		}));
 	}
 }

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { userEvent } from '@storybook/testing-library';
+import { within, userEvent } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import { Clickable, type ClickableProps } from '../../src/common/Clickable';
 
-customElements.define('my-button', Clickable);
+customElements.define('my-clickable', Clickable);
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'my-button': Clickable;
+		'my-clickable': Clickable;
 	}
 }
 
@@ -23,9 +23,9 @@ const meta: Meta<ClickableProps> = {
 	title: 'Keyboard/Clickable',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
-		<my-button @click=${onClick} ?disabled=${disabled}>
+		<my-clickable role="button" @trigger=${onClick} .disabled=${disabled}>
 			Click Me!
-		</my-button>
+		</my-clickable>
 		<div id="message-box" role="status"></div>
 	`,
 };
@@ -34,8 +34,8 @@ export default meta;
 
 function setup(canvasElement: HTMLElement): HTMLElement {
 	onClick.mockClear();
-	const component = canvasElement.querySelector('my-button')!;
-	return component.shadowRoot?.firstElementChild as HTMLDivElement;
+	const screen = within(canvasElement);
+	return screen.getByRole('button', { name: 'Click Me!' });
 }
 
 type Story = StoryObj<ClickableProps>;
@@ -74,5 +74,6 @@ export const ClickDisabled: Story = {
 		const button = setup(canvasElement);
 		await userEvent.click(button);
 		expect(onClick).not.toBeCalled();
+		expect(button).toHaveAttribute('aria-disabled', 'true');
 	}
 };

@@ -1,6 +1,4 @@
-import React from 'react';
-
-import Clickable, { type GenericClickableProps } from './common/Clickable';
+import { Clickable } from './common/Clickable';
 
 /**
  * **Important**: For normal buttons, please use `<button>` instead.
@@ -14,8 +12,10 @@ import Clickable, { type GenericClickableProps } from './common/Clickable';
  * that a button launches a dialog is
  * to append "…" (ellipsis) to the button label, e.g., "Save as…".
  */
-export default function Button<T extends HTMLElement = HTMLDivElement>(
-	props: GenericClickableProps<T>,
-): JSX.Element {
-	return <Clickable<T> role="button" {...props} />;
+export class Button extends Clickable {
+	role = 'button';
 }
+
+export { type ClickableProps as ButtonProps } from './common/Clickable';
+
+export default Button;
