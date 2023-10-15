@@ -9,13 +9,7 @@
 		"esModuleInterop": true,
 		"strict": true,
     "experimentalDecorators": true,
-		"useDefineForClassFields": false,
-    "plugins": [
-      {
-        "name": "ts-lit-plugin",
-        "strict": true
-      }
-    ]
+		"useDefineForClassFields": false
 	},
 	"include": [
 		"src/Clickable.ts"

@@ -11,7 +11,8 @@
     "test": "npm run lint && test-storybook",
     "lint": "eslint --ext=ts,js .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
   },
   "repository": {
     "type": "git",
@@ -49,7 +50,6 @@
     "rimraf": "^5.0.5",
     "sinon": "^16.1.0",
     "storybook": "^7.5.0-alpha.7",
-    "ts-lit-plugin": "^1.2.1",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
