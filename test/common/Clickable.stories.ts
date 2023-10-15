@@ -3,7 +3,7 @@ import { userEvent } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { Clickable, type ClickableProps } from '../src/Clickable';
+import { Clickable, type ClickableProps } from '../../src/common/Clickable';
 
 customElements.define('my-button', Clickable);
 
@@ -20,7 +20,7 @@ const onClick = jest.fn(() => {
 });
 
 const meta: Meta<ClickableProps> = {
-	title: 'Controls/Button',
+	title: 'Keyboard/Clickable',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
 		<my-button @click=${onClick} ?disabled=${disabled}>

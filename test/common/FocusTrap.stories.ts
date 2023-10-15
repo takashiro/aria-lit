@@ -3,7 +3,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import FocusTrap, { type FocusTrapProps } from '../../src/common/FocusTrap';
+import { FocusTrap, type FocusTrapProps } from '../../src/common/FocusTrap';
 
 customElements.define('focus-trap', FocusTrap);
 

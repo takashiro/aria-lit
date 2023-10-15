@@ -84,7 +84,7 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 	return ['ArrowUp', 'ArrowLeft'];
 }
 
-export default class FocusList extends LitElement implements FocusListProps {
+export class FocusList extends LitElement implements FocusListProps {
 	selector?: string;
 
 	orientation?: Orientation;

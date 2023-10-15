@@ -34,7 +34,7 @@ export interface FocusTrapProps {
  * The focus goes from the last interactive element to the first if it reaches the end.
  * It also goes from the first to the last vice versa.
  */
-export default class FocusTrap extends LitElement implements FocusTrapProps {
+export class FocusTrap extends LitElement implements FocusTrapProps {
 	pattern?: string;
 
 	connectedCallback(): void {

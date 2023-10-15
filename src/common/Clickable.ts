@@ -1,25 +1,26 @@
 import { LitElement, TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export interface ClickableProps {
 	/**
 	 * Whether the clickable element is disabled.
 	 */
-	disabled: boolean;
+	disabled?: boolean;
 }
 
 /**
  * A clickable element, used to implement buttons, checkboxes or anything can be clicked.
  */
 export class Clickable extends LitElement implements ClickableProps {
-	@property({ type: Boolean }) disabled = false;
+	@property({ type: Boolean }) disabled?: boolean;
 
 	static styles = css`
-		[role='button'] {
+		.clickable {
 			cursor: pointer;
 		}
 
-		[role='button'][aria-disabled='true'] {
+		.clickable[aria-disabled='true'] {
 			cursor: not-allowed;
 		}
 	`;
@@ -27,7 +28,7 @@ export class Clickable extends LitElement implements ClickableProps {
 	override render(): TemplateResult<1> {
 		const tabIndex = this.disabled ? -1 : 0;
 		return html`
-			<div role=${this.role ?? 'button'} tabindex=${tabIndex} @click=${this.#handleClick} @keydown=${this.#handleKeyDown} aria-disabled=${this.disabled}>
+			<div class="clickable" role=${ifDefined(this.role)} tabindex=${tabIndex} @click=${this.#handleClick} @keydown=${this.#handleKeyDown} aria-disabled=${ifDefined(this.disabled)}>
 				<slot></slot>
 			</div>
 		`;

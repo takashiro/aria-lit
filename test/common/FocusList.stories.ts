@@ -3,7 +3,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import FocusList, { type FocusListProps } from '../../src/common/FocusList';
+import { FocusList, type FocusListProps } from '../../src/common/FocusList';
 
 customElements.define('focus-list', FocusList);
 
