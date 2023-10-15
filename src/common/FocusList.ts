@@ -1,4 +1,3 @@
-import { LitElement } from 'lit';
 import findElements from '../dom/findElements';
 
 type Orientation = 'portrait' | 'landscape';
@@ -84,7 +83,7 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 	return ['ArrowUp', 'ArrowLeft'];
 }
 
-export class FocusList extends LitElement implements FocusListProps {
+export class FocusList extends HTMLElement implements FocusListProps {
 	selector?: string;
 
 	orientation?: Orientation;

@@ -1,5 +1,3 @@
-import { LitElement } from 'lit';
-
 import findElements from '../dom/findElements';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
@@ -34,7 +32,7 @@ export interface FocusTrapProps {
  * The focus goes from the last interactive element to the first if it reaches the end.
  * It also goes from the first to the last vice versa.
  */
-export class FocusTrap extends LitElement implements FocusTrapProps {
+export class FocusTrap extends HTMLElement implements FocusTrapProps {
 	pattern?: string;
 
 	connectedCallback(): void {
