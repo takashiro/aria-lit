@@ -8,7 +8,7 @@
     "start": "wds --node-resolve --open --watch",
     "build": "tsc",
     "clean": "rimraf dist",
-    "test": "npm run lint",
+    "test": "npm run lint && test-storybook",
     "lint": "eslint --ext=ts,js .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -31,9 +31,12 @@
   "homepage": "https://github.com/takashiro/aria-lit#readme",
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.0-alpha.7",
+    "@storybook/addon-interactions": "^7.5.0-alpha.7",
     "@storybook/addon-links": "^7.5.0-alpha.7",
     "@storybook/blocks": "^7.5.0-alpha.7",
+    "@storybook/jest": "^0.2.3",
     "@storybook/test-runner": "^0.13.1-next.1",
+    "@storybook/testing-library": "^0.2.2",
     "@storybook/web-components": "^7.5.0-alpha.7",
     "@storybook/web-components-vite": "^7.5.0-alpha.7",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
