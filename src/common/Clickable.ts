@@ -11,6 +11,8 @@ export interface ClickableProps {
 export class Clickable extends HTMLElement implements ClickableProps {
 	disabled?: boolean;
 
+	protected keys = [' ', 'Enter'];
+
 	connectedCallback(): void {
 		this.#init();
 		this.addEventListener('click', this.#handleClick);
@@ -43,13 +45,13 @@ export class Clickable extends HTMLElement implements ClickableProps {
 			return;
 		}
 
-		if ([' ', 'Enter'].includes(e.key)) {
+		if (this.keys.includes(e.key)) {
 			this.#trigger();
 		}
 	}
 
 	#trigger(): void {
-		this.dispatchEvent(new MouseEvent('trigger', {
+		this.dispatchEvent(new CustomEvent('trigger', {
 			bubbles: true,
 			composed: true,
 		}));
