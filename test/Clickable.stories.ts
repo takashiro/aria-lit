@@ -5,6 +5,14 @@ import { html } from 'lit/html.js';
 
 import { Clickable, type ClickableProps } from '../src/Clickable';
 
+customElements.define('my-button', Clickable);
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'my-button': Clickable;
+	}
+}
+
 let count = 0;
 const onClick = jest.fn(() => {
 	count++;
@@ -15,9 +23,9 @@ const meta: Meta<ClickableProps> = {
 	title: 'Controls/Button',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
-		<kart-clickable @click=${onClick} ?disabled=${disabled}>
+		<my-button @click=${onClick} ?disabled=${disabled}>
 			Click Me!
-		</kart-clickable>
+		</my-button>
 		<div id="message-box" role="status"></div>
 	`,
 };
@@ -26,8 +34,7 @@ export default meta;
 
 function setup(canvasElement: HTMLElement): HTMLElement {
 	onClick.mockClear();
-	const component = canvasElement.querySelector('kart-clickable')!;
-	expect(component).toBeInstanceOf(Clickable);
+	const component = canvasElement.querySelector('my-button')!;
 	return component.shadowRoot?.firstElementChild as HTMLDivElement;
 }
 

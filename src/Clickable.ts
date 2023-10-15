@@ -1,5 +1,5 @@
 import { LitElement, TemplateResult, css, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 
 export interface ClickableProps {
 	/**
@@ -11,7 +11,6 @@ export interface ClickableProps {
 /**
  * A clickable element, used to implement buttons, checkboxes or anything can be clicked.
  */
-@customElement('kart-clickable')
 export class Clickable extends LitElement implements ClickableProps {
 	@property({ type: Boolean }) disabled = false;
 
@@ -52,11 +51,5 @@ export class Clickable extends LitElement implements ClickableProps {
 				composed: true,
 			}));
 		}
-	}
-}
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'kart-clickable': Clickable;
 	}
 }
