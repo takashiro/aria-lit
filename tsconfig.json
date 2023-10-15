@@ -12,6 +12,7 @@
 		"useDefineForClassFields": false
 	},
 	"include": [
-		"src/Clickable.ts"
+		"src/Clickable.ts",
+		"src/common/*.ts"
 	]
 }

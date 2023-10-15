@@ -1,6 +1,5 @@
-import React from 'react';
+import { LitElement } from 'lit';
 
-import type BasicProps from './BasicProps';
 import findElements from '../dom/findElements';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
@@ -20,21 +19,13 @@ const moveFocus = (
 	}
 };
 
-interface FocusTrapProps<T> extends BasicProps, React.HTMLAttributes<T> {
+export interface FocusTrapProps {
 	/**
 	 * A CSS selector to find all interactive elements inside.
 	 *
 	 * By default, it looks for all built-in elements and those with proper `tabindex`.
 	 */
 	pattern?: string;
-
-	/**
-	 * This is called when `Esc` key is pressed.
-	 * The callback should move focus to the trigger element.
-	 *
-	 * @param e keyboard event.
-	 */
-	onEscape?(e: React.KeyboardEvent<T>): void;
 }
 
 /**
@@ -43,41 +34,33 @@ interface FocusTrapProps<T> extends BasicProps, React.HTMLAttributes<T> {
  * The focus goes from the last interactive element to the first if it reaches the end.
  * It also goes from the first to the last vice versa.
  */
-export default function FocusTrap<T extends HTMLElement = HTMLDivElement>({
-	component: Component = 'div',
-	pattern = defaultPattern,
-	onEscape,
-	children,
-	onKeyDown,
-	...otherProps
-}: FocusTrapProps<T>): JSX.Element {
-	const me = React.useRef<T>(null);
+export default class FocusTrap extends LitElement implements FocusTrapProps {
+	pattern?: string;
 
-	const handleKeyDown = (e: React.KeyboardEvent<T>) => {
+	connectedCallback(): void {
+		this.addEventListener('keydown', this.#handleKeyDown);
+	}
+
+	disconnectedCallback(): void {
+		this.removeEventListener('keydown', this.#handleKeyDown);
+	}
+
+	#handleKeyDown = (e: KeyboardEvent): void => {
 		if (!e.ctrlKey && !e.altKey && !e.metaKey) {
 			if (e.key === 'Tab') {
-				const elements = findElements(e.currentTarget, pattern);
+				const elements = findElements(this, this.pattern ?? defaultPattern);
 				const next = moveFocus(elements, e.target, e.shiftKey);
 				if (next) {
 					e.preventDefault();
+					e.stopPropagation();
 					setTimeout(() => next.focus(), 0);
 				}
 			} else if (e.key === 'Escape') {
-				onEscape?.(e);
+				this.dispatchEvent(new KeyboardEvent('escape', {
+					bubbles: true,
+					composed: true,
+				}));
 			}
 		}
-		onKeyDown?.(e);
-	};
-
-	React.useEffect(() => {
-		const container = me.current as HTMLElement;
-		const [first] = findElements(container, pattern);
-		first?.focus();
-	}, []);
-
-	return (
-		<Component ref={me} onKeyDown={handleKeyDown} {...otherProps}>
-			{children}
-		</Component>
-	);
+	}
 }
