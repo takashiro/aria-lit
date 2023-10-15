@@ -1,15 +1,13 @@
-import React from 'react';
-
-import type BasicProps from './BasicProps';
+import { LitElement } from 'lit';
 import findElements from '../dom/findElements';
 
 type Orientation = 'portrait' | 'landscape';
 
-interface FocusListProps<T> extends BasicProps, React.HTMLAttributes<T> {
+export interface FocusListProps {
 	/**
 	 * CSS selector to find interactive elements.
 	 */
-	selector: string;
+	selector?: string;
 
 	/**
 	 * If a specific orientation is defined,
@@ -34,7 +32,11 @@ interface FocusListProps<T> extends BasicProps, React.HTMLAttributes<T> {
 	circular?: boolean;
 }
 
-const calculateOffset = (key: string, forwardKeys: string[], backwardKeys: string[]): number => {
+const calculateOffset = (
+	key: string,
+	forwardKeys: string[],
+	backwardKeys: string[],
+): number => {
 	if (forwardKeys.includes(key)) {
 		return 1;
 	}
@@ -82,32 +84,43 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 	return ['ArrowUp', 'ArrowLeft'];
 }
 
-export default function FocusList<T extends HTMLElement = HTMLDivElement>({
-	component: Component = 'div',
-	children,
-	onKeyDown,
-	selector,
-	orientation,
-	forwardKeys = getForwardKeys(orientation),
-	backwardKeys = getBackwardKeys(orientation),
-	circular,
-	...otherProps
-}: FocusListProps<T>): JSX.Element {
-	const handleKeyDown = (e: React.KeyboardEvent<T>): void => {
-		if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
-			const offset = calculateOffset(e.key, forwardKeys, backwardKeys);
-			if (offset) {
-				const interactives = findElements(e.currentTarget, selector);
-				const next = findNext(interactives, e.target, offset, circular);
-				next?.focus();
+export default class FocusList extends LitElement implements FocusListProps {
+	selector?: string;
+
+	orientation?: Orientation;
+
+	forwardKeys?: string[];
+
+	backwardKeys?: string[];
+
+	circular?: boolean;
+
+	connectedCallback(): void {
+		this.addEventListener('keydown', this.#handleKeyDown);
+	}
+
+	disconnectedCallback(): void {
+		this.removeEventListener('keydown', this.#handleKeyDown);
+	}
+
+	#handleKeyDown = (e: KeyboardEvent): void => {
+		if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) {
+			return;
+		}
+
+		const {
+			forwardKeys = getForwardKeys(this.orientation),
+			backwardKeys = getBackwardKeys(this.orientation),
+		} = this;
+
+		const offset = calculateOffset(e.key, forwardKeys, backwardKeys);
+		if (offset) {
+			const interactives = findElements(this, this.selector ?? 'button');
+			const next = findNext(interactives, e.target, offset, this.circular);
+			if (next) {
+				e.preventDefault();
+				next.focus();
 			}
 		}
-		onKeyDown?.(e);
-	};
-
-	return (
-		<Component onKeyDown={handleKeyDown} {...otherProps}>
-			{children}
-		</Component>
-	);
+	}
 }
