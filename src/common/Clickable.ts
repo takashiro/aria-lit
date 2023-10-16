@@ -57,3 +57,5 @@ export class Clickable extends HTMLElement implements ClickableProps {
 		}));
 	}
 }
+
+export default Clickable;

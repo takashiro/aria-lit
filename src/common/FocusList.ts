@@ -123,3 +123,5 @@ export class FocusList extends HTMLElement implements FocusListProps {
 		}
 	}
 }
+
+export default FocusList;

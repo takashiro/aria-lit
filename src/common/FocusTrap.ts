@@ -62,3 +62,5 @@ export class FocusTrap extends HTMLElement implements FocusTrapProps {
 		}
 	}
 }
+
+export default FocusTrap;
