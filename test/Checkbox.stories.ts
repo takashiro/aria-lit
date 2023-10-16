@@ -29,6 +29,7 @@ type Story = StoryObj<CheckboxProps>;
 
 export const Enabled: Story = {
 	async play({ canvasElement, step }): Promise<void> {
+		onChange.mockClear();
 		const screen = within(canvasElement);
 		const checkbox = screen.getByRole('checkbox', { name: 'Toggle me!' });
 

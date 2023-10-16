@@ -29,6 +29,7 @@ type Story = StoryObj<SwitchProps>;
 
 export const Enabled: Story = {
 	async play({ canvasElement, step }): Promise<void> {
+		onChange.mockClear();
 		const screen = within(canvasElement);
 		const swit = screen.getByRole('switch', { name: 'Toggle me!' });
 
