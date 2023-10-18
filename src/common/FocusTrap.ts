@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import findElements from '../dom/findElements';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
@@ -32,6 +34,7 @@ export interface FocusTrapProps {
  * The focus goes from the last interactive element to the first if it reaches the end.
  * It also goes from the first to the last vice versa.
  */
+@customElement('karuta-focustrap')
 export class FocusTrap extends HTMLElement implements FocusTrapProps {
 	pattern?: string;
 
@@ -64,3 +67,9 @@ export class FocusTrap extends HTMLElement implements FocusTrapProps {
 }
 
 export default FocusTrap;
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-focustrap': FocusTrap;
+	}
+}

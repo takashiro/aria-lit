@@ -5,16 +5,6 @@ import { html } from 'lit/html.js';
 
 import { RadioGroup, Radio, type RadioGroupProps, type ChangeEvent } from '../src/RadioGroup';
 
-customElements.define('karuta-radio-group', RadioGroup);
-customElements.define('karuta-radio', Radio);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'karuta-radio-group': RadioGroup<unknown>;
-		'karuta-radio': Radio<unknown>;
-	}
-}
-
 const onChange = jest.fn<void, [ChangeEvent<number>]>();
 
 const meta: Meta<RadioGroupProps<number>> = {
@@ -22,11 +12,11 @@ const meta: Meta<RadioGroupProps<number>> = {
 	tags: ['autodocs'],
 	render: () => html`
 		<div id="my-question">Which color do you like?</div>
-		<karuta-radio-group @change=${onChange} aria-labelledby="my-question">
+		<karuta-radiogroup @change=${onChange} aria-labelledby="my-question">
 			<karuta-radio .value=${0}>Red</karuta-radio>
 			<karuta-radio .value=${2}>Green</karuta-radio>
 			<karuta-radio .value=${6}>Blue</karuta-radio>
-		</karuta-radio-group>
+		</karuta-radiogroup>
 	`,
 };
 
@@ -41,6 +31,8 @@ export const Enabled: Story = {
 		await step('select a radio via mouse', async () => {
 			onChange.mockClear();
 			const radio = screen.getByRole('radio', { name: 'Green' });
+			expect(radio).toBeInstanceOf(Radio);
+			expect(radio.parentElement).toBeInstanceOf(RadioGroup);
 			await userEvent.click(radio);
 			expect(document.activeElement).toBe(radio);
 			expect(radio).toBeChecked();

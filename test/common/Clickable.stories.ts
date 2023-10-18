@@ -5,14 +5,6 @@ import { html } from 'lit/html.js';
 
 import { Clickable, type ClickableProps } from '../../src/common/Clickable';
 
-customElements.define('my-clickable', Clickable);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'my-clickable': Clickable;
-	}
-}
-
 let count = 0;
 const onClick = jest.fn(() => {
 	count++;
@@ -23,9 +15,9 @@ const meta: Meta<ClickableProps> = {
 	title: 'Keyboard/Clickable',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
-		<my-clickable role="button" @trigger=${onClick} .disabled=${disabled}>
+		<karuta-clickable role="button" @trigger=${onClick} .disabled=${disabled}>
 			Click Me!
-		</my-clickable>
+		</karuta-clickable>
 		<div id="message-box" role="status"></div>
 	`,
 };
@@ -43,6 +35,7 @@ type Story = StoryObj<ClickableProps>;
 export const Click: Story = {
 	async play({ canvasElement }): Promise<void> {
 		const button = setup(canvasElement);
+		expect(button).toBeInstanceOf(Clickable);
 		await userEvent.click(button);
 		expect(onClick).toBeCalled();
 	}

@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 export interface ClickableProps {
 	/**
 	 * Whether the clickable element is disabled.
@@ -8,6 +10,7 @@ export interface ClickableProps {
 /**
  * A clickable element, used to implement buttons, checkboxes or anything can be clicked.
  */
+@customElement('karuta-clickable')
 export class Clickable extends HTMLElement implements ClickableProps {
 	disabled?: boolean;
 
@@ -59,3 +62,9 @@ export class Clickable extends HTMLElement implements ClickableProps {
 }
 
 export default Clickable;
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'my-clickable': Clickable;
+	}
+}

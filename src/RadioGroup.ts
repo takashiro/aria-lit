@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import FocusList from './common/FocusList';
 import { Radio } from './Radio';
 
@@ -27,6 +29,7 @@ export interface RadioGroupProps<T> {
  * A radio group is a set of checkable buttons, known as radio buttons,
  * where no more than one of the buttons can be checked at a time.
  */
+@customElement('karuta-radiogroup')
 export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 	role = 'radiogroup';
 
@@ -96,3 +99,9 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 export default RadioGroup;
 
 export { Radio } from './Radio';
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-radiogroup': RadioGroup<unknown>;
+	}
+}

@@ -5,14 +5,6 @@ import { html } from 'lit/html.js';
 
 import { Checkbox, type CheckboxProps, type ChangeEvent } from '../src/Checkbox';
 
-customElements.define('karuta-checkbox', Checkbox);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'karuta-checkbox': Checkbox;
-	}
-}
-
 const onChange = jest.fn<void, [ChangeEvent]>();
 
 const meta: Meta<CheckboxProps> = {
@@ -32,6 +24,7 @@ export const Enabled: Story = {
 		onChange.mockClear();
 		const screen = within(canvasElement);
 		const checkbox = screen.getByRole('checkbox', { name: 'Toggle me!' });
+		expect(checkbox).toBeInstanceOf(Checkbox);
 
 		await step('can be triggered by mouse event', async () => {
 			await expect(checkbox).not.toBeChecked();

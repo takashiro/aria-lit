@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import CheckboxLike from './common/CheckboxLike';
 
 /**
@@ -5,6 +7,7 @@ import CheckboxLike from './common/CheckboxLike';
  *
  * A switch is an input widget that allows users to choose one of two values: on or off.
  */
+@customElement('karuta-switch')
 export class Switch extends CheckboxLike {
 	role = 'switch';
 }
@@ -16,3 +19,9 @@ export type {
 	ChangeEvent,
 	ChangeEventHandler,
 } from './common/CheckboxLike';
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-switch': Switch;
+	}
+}

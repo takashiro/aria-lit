@@ -5,21 +5,13 @@ import { html } from 'lit/html.js';
 
 import { ToggleButton, type ToggleButtonProps, type ChangeEvent } from '../src/ToggleButton';
 
-customElements.define('karuta-toggle', ToggleButton);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'karuta-toggle': ToggleButton;
-	}
-}
-
 const onChange = jest.fn<void, [ChangeEvent]>();
 
 const meta: Meta<ToggleButtonProps> = {
 	title: 'Controls/ToggleButton',
 	tags: ['autodocs'],
 	render: () => html`
-		<karuta-toggle @change=${onChange}>Bold</karuta-toggle>
+		<karuta-togglebutton @change=${onChange}>Bold</karuta-togglebutton>
 	`,
 };
 
@@ -39,6 +31,7 @@ export const Enabled: Story = {
 			expect(e.detail.pressed).toBe(true);
 			const button = screen.getByRole('button', { name: 'Bold', pressed: true });
 			expect(document.activeElement).toBe(button);
+			expect(button).toBeInstanceOf(ToggleButton);
 		});
 
 		await step('trigger it by space key', async () => {

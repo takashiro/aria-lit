@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import Clickable from './common/Clickable';
 
 export interface RadioProps<T> {
@@ -12,6 +14,7 @@ export interface RadioProps<T> {
 	value?: T;
 }
 
+@customElement('karuta-radio')
 export class Radio<T> extends Clickable implements RadioProps<T> {
 	static observedAttributes = ['value'];
 
@@ -34,3 +37,9 @@ export class Radio<T> extends Clickable implements RadioProps<T> {
 }
 
 export default Radio;
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-radio': Radio<unknown>;
+	}
+}

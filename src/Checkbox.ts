@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import CheckboxLike from './common/CheckboxLike';
 
 /**
@@ -5,6 +7,7 @@ import CheckboxLike from './common/CheckboxLike';
  *
  * A checkable input that has three possible values: true, false, or mixed.
  */
+@customElement('karuta-checkbox')
 export class Checkbox extends CheckboxLike {
 	role = 'checkbox';
 }
@@ -16,3 +19,9 @@ export type {
 	ChangeEvent,
 	ChangeEventHandler,
 } from './common/CheckboxLike';
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-checkbox': Checkbox;
+	}
+}

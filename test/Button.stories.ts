@@ -5,14 +5,6 @@ import { html } from 'lit/html.js';
 
 import Button, { type ButtonProps } from '../src/Button';
 
-customElements.define('my-button', Button);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'my-button': Button;
-	}
-}
-
 let count = 0;
 const onClick = jest.fn(() => {
 	count++;
@@ -23,9 +15,9 @@ const meta: Meta<ButtonProps> = {
 	title: 'Controls/Button',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
-		<my-button @trigger=${onClick} .disabled=${disabled}>
+		<karuta-button @trigger=${onClick} .disabled=${disabled}>
 			Click Me!
-		</my-button>
+		</karuta-button>
 		<div id="message-box" role="status"></div>
 	`,
 };
@@ -44,6 +36,7 @@ type Story = StoryObj<ButtonProps>;
 export const Enabled: Story = {
 	async play({ canvasElement, step }): Promise<void> {
 		const button = setup(canvasElement);
+		expect(button).toBeInstanceOf(Button);
 
 		await step('click', async () => {
 			await userEvent.click(button);

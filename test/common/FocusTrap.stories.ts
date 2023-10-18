@@ -5,14 +5,6 @@ import { html } from 'lit/html.js';
 
 import { FocusTrap, type FocusTrapProps } from '../../src/common/FocusTrap';
 
-customElements.define('focus-trap', FocusTrap);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'focus-trap': FocusTrap;
-	}
-}
-
 const onEscape = jest.fn();
 
 const meta: Meta<FocusTrapProps> = {
@@ -21,7 +13,7 @@ const meta: Meta<FocusTrapProps> = {
 	render: ({ pattern }) => html`
 		<button type="button">Before</button>
 		<p>--- Focus Trap ---</p>
-		<focus-trap .pattern=${pattern} @escape=${onEscape}>
+		<karuta-focustrap .pattern=${pattern} @escape=${onEscape}>
 			<button type="button">Native Button</button>
 			<a id="anchor">Page Anchor</a>
 			<a href="https://www.google.com">Google</a>
@@ -29,7 +21,7 @@ const meta: Meta<FocusTrapProps> = {
 			<input type="text" aria-label="User Name">
 			<textarea aria-label="Note"></textarea>
 			<div role="checkbox" tabIndex="0" aria-label="Toggle" aria-checked style="width: 10px; height: 10px"></div>
-		</focus-trap>
+		</karuta-focustrap>
 		<p>--- Focus Trap ---</p>
 		<button type="button">After</button>
 	`,
@@ -52,6 +44,7 @@ export const Default: Story = {
 			await userEvent.tab();
 			const button = canvas.getByRole('button', { name: 'Native Button' });
 			expect(button).toBe(document.activeElement);
+			expect(button.parentElement).toBeInstanceOf(FocusTrap);
 		});
 
 		await step('should go to link', async () => {

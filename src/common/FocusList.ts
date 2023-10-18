@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import findElements from '../dom/findElements';
 
 type Orientation = 'portrait' | 'landscape';
@@ -83,6 +85,7 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 	return ['ArrowUp', 'ArrowLeft'];
 }
 
+@customElement('karuta-focuslist')
 export class FocusList extends HTMLElement implements FocusListProps {
 	selector?: string;
 
@@ -125,3 +128,9 @@ export class FocusList extends HTMLElement implements FocusListProps {
 }
 
 export default FocusList;
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-focuslist': FocusList;
+	}
+}

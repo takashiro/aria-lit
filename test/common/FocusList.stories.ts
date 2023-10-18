@@ -5,25 +5,17 @@ import { html } from 'lit/html.js';
 
 import { FocusList, type FocusListProps } from '../../src/common/FocusList';
 
-customElements.define('focus-list', FocusList);
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'focus-list': FocusList;
-	}
-}
-
 const meta: Meta<FocusListProps> = {
 	title: 'Keyboard/FocusList',
 	tags: ['autodocs'],
 	render: ({ circular, orientation }) => html`
 		<button type="button">Before</button>
 		<hr>
-		<focus-list .selector="button" .circular=${circular} .orientation=${orientation}>
+		<karuta-focuslist .selector="button" .circular=${circular} .orientation=${orientation}>
 				<button type="button" tabindex="-1">A</button>
 				<button type="button" tabindex="-1">B</button>
 				<button type="button" tabindex="-1">C</button>
-		</focus-list>
+		</karuta-focuslist>
 		<hr>
 		<button type="button">After</button>
 	`,
@@ -39,6 +31,8 @@ export const ButtonList: Story = {
 		const a = screen.getByRole('button', { name: 'A' });
 		const b = screen.getByRole('button', { name: 'B' });
 		const c = screen.getByRole('button', { name: 'C' });
+
+		expect(a.parentElement).toBeInstanceOf(FocusList);
 
 		await step('can move focus forward', async () => {
 			a.focus();

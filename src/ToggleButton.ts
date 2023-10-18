@@ -1,3 +1,5 @@
+import { customElement } from 'lit/decorators.js';
+
 import Button from './Button';
 
 type PressedState = boolean | 'mixed';
@@ -23,6 +25,7 @@ export interface ToggleButtonProps {
  *
  * A two-state button that can be either off (not pressed) or on (pressed).
  */
+@customElement('karuta-togglebutton')
 export class ToggleButton extends Button implements ToggleButtonProps {
 	pressed?: PressedState;
 
@@ -54,3 +57,9 @@ export class ToggleButton extends Button implements ToggleButtonProps {
 }
 
 export default ToggleButton;
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'karuta-togglebutton': ToggleButton;
+	}
+}
