@@ -32,30 +32,30 @@ export const ButtonList: Story = {
 		const b = screen.getByRole('button', { name: 'B' });
 		const c = screen.getByRole('button', { name: 'C' });
 
-		expect(a.parentElement).toBeInstanceOf(FocusList);
+		await expect(a.parentElement).toBeInstanceOf(FocusList);
 
 		await step('can move focus forward', async () => {
 			a.focus();
 			await userEvent.keyboard('{ArrowRight}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(c);
+			await expect(document.activeElement).toBe(c);
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(c);
+			await expect(document.activeElement).toBe(c);
 		});
 
 		await step('can move focus backforward', async () => {
 			await userEvent.keyboard('{ArrowUp}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 
 		await step('ignores other keys', async () => {
 			await userEvent.keyboard('{Enter}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 	},
 };
@@ -74,20 +74,20 @@ export const CircularButtonList: Story = {
 		await step('can move focus forward', async () => {
 			a.focus();
 			await userEvent.keyboard('{ArrowRight}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(c);
+			await expect(document.activeElement).toBe(c);
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 
 		await step('can move focus backforward', async () => {
 			await userEvent.keyboard('{ArrowUp}');
-			expect(document.activeElement).toBe(c);
+			await expect(document.activeElement).toBe(c);
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 	},
 };
@@ -106,16 +106,16 @@ export const VerticalButtonList: Story = {
 		await step('accepts arrow down', async () => {
 			a.focus();
 			await userEvent.keyboard('{ArrowRight}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 		});
 
 		await step('accepts arrow up', async () => {
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowUp}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 	},
 };
@@ -133,16 +133,16 @@ export const HorizontalFocusList: Story = {
 		await step('accepts arrow right', async () => {
 			a.focus();
 			await userEvent.keyboard('{ArrowDown}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 			await userEvent.keyboard('{ArrowRight}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 		});
 
 		await step('accepts arrow left', async () => {
 			await userEvent.keyboard('{ArrowUp}');
-			expect(document.activeElement).toBe(b);
+			await expect(document.activeElement).toBe(b);
 			await userEvent.keyboard('{ArrowLeft}');
-			expect(document.activeElement).toBe(a);
+			await expect(document.activeElement).toBe(a);
 		});
 	},
 };

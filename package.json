@@ -5,12 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "wds --node-resolve --open --watch",
+    "start": "storybook dev -p 6006",
     "build": "tsc",
     "clean": "rimraf dist",
     "test": "npm run lint && test-storybook",
     "lint": "eslint --ext=ts,js .",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook"
   },

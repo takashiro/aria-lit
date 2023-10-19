@@ -82,7 +82,7 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 		if (target instanceof Radio) {
 			e.preventDefault();
 			e.stopPropagation();
-			this.#select(target);
+			this.#select(target as Radio<T>);
 		}
 	}
 
@@ -91,7 +91,7 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 		if (target instanceof Radio) {
 			e.preventDefault();
 			e.stopPropagation();
-			this.#select(target);
+			this.#select(target as Radio<T>);
 		}
 	}
 }

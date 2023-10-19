@@ -35,11 +35,11 @@ export const Default: Story = {
 		const screen = within(canvasElement);
 
 		const disclosure = canvasElement.querySelector('karuta-disclosure')!;
-		expect(disclosure).toBeInstanceOf(Disclosure);
+		await expect(disclosure).toBeInstanceOf(Disclosure);
 
-		await step('should be hidden by default', () => {
+		await step('should be hidden by default', async () => {
 			const content = screen.getByTestId('my-content');
-			expect(content.assignedSlot).toBeNull();
+			await expect(content.assignedSlot).toBeNull();
 		});
 
 		await step('toggle content', async () => {
@@ -47,7 +47,7 @@ export const Default: Story = {
 			const trigger = shadow.getByRole('button', { name: 'Toggle me!', expanded: false });
 			await userEvent.click(trigger);
 			const content = screen.getByTestId('my-content');
-			expect(content.assignedSlot).toBeVisible();
+			await expect(content.assignedSlot).toBeVisible();
 		});
 	},
 };

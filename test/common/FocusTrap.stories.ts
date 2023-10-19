@@ -43,80 +43,80 @@ export const Default: Story = {
 		await step('focus on the first element', async () => {
 			await userEvent.tab();
 			const button = canvas.getByRole('button', { name: 'Native Button' });
-			expect(button).toBe(document.activeElement);
-			expect(button.parentElement).toBeInstanceOf(FocusTrap);
+			await expect(button).toBe(document.activeElement);
+			await expect(button.parentElement).toBeInstanceOf(FocusTrap);
 		});
 
 		await step('should go to link', async () => {
 			await userEvent.tab();
 			const google = canvas.getByRole('link', { name: 'Google' });
-			expect(google).toBe(document.activeElement);
+			await expect(google).toBe(document.activeElement);
 		});
 
 		await step('should go to input', async () => {
 			await userEvent.tab();
 			const username = canvas.getByRole('textbox', { name: 'User Name' });
-			expect(username).toBe(document.activeElement);
+			await expect(username).toBe(document.activeElement);
 		});
 
 		await step('should go to textarea', async () => {
 			await userEvent.tab();
 			const note = canvas.getByRole('textbox', { name: 'Note' });
-			expect(note).toBe(document.activeElement);
+			await expect(note).toBe(document.activeElement);
 		});
 
 		await step('should go to checkbox', async () => {
 			await userEvent.tab();
 			const checkbox = canvas.getByRole('checkbox', { name: 'Toggle' });
-			expect(checkbox).toBe(document.activeElement);
+			await expect(checkbox).toBe(document.activeElement);
 		});
 
 		await step('should go back to the first element', async () => {
 			await userEvent.tab();
 			const button = canvas.getByRole('button', { name: 'Native Button' });
-			expect(button).toBe(document.activeElement);
+			await expect(button).toBe(document.activeElement);
 		});
 
 		await step('should go back to the last element', async () => {
 			await userEvent.tab({ shift: true });
 			const checkbox = canvas.getByRole('checkbox', { name: 'Toggle' });
-			expect(checkbox).toBe(document.activeElement);
+			await expect(checkbox).toBe(document.activeElement);
 		});
 
 		await step('should go back to textarea', async () => {
 			await userEvent.tab({ shift: true });
 			const note = canvas.getByRole('textbox', { name: 'Note' });
-			expect(note).toBe(document.activeElement);
+			await expect(note).toBe(document.activeElement);
 		});
 
 		await step('should go back to input', async () => {
 			await userEvent.tab({ shift: true });
 			const username = canvas.getByRole('textbox', { name: 'User Name' });
-			expect(username).toBe(document.activeElement);
+			await expect(username).toBe(document.activeElement);
 		});
 
 		await step('should handle Esc key', async () => {
 			onEscape.mockClear();
 			await userEvent.keyboard('{Escape}');
-			expect(onEscape).toBeCalledTimes(1);
+			await expect(onEscape).toBeCalledTimes(1);
 		});
 
 		await step('should go back to link', async () => {
 			await userEvent.tab({ shift: true });
 			const google = canvas.getByRole('link', { name: 'Google' });
-			expect(google).toBe(document.activeElement);
+			await expect(google).toBe(document.activeElement);
 		});
 
 		await step('should go back to button', async () => {
 			await userEvent.tab({ shift: true });
 			const button = canvas.getByRole('button', { name: 'Native Button' });
-			expect(button).toBe(document.activeElement);
+			await expect(button).toBe(document.activeElement);
 		});
 
 		await step('should go back to checkbox', async () => {
 			await userEvent.tab({ shift: true });
 			const checkbox = canvas.getByRole('checkbox', { name: 'Toggle' });
-			expect(checkbox).toBe(document.activeElement);
+			await expect(checkbox).toBe(document.activeElement);
 		});
 	},
 };
@@ -137,19 +137,19 @@ export const Custom: Story = {
 		await step('focus on link', async () => {
 			await userEvent.tab();
 			const google = canvas.getByRole('link', { name: 'Google' });
-			expect(google).toBe(document.activeElement);
+			await expect(google).toBe(document.activeElement);
 		});
 
 		await step('should stay on the same link (forward)', async () => {
 			await userEvent.tab();
 			const google = canvas.getByRole('link', { name: 'Google' });
-			expect(google).toBe(document.activeElement);
+			await expect(google).toBe(document.activeElement);
 		});
 
 		await step('should stay on the same link (backward)', async () => {
 			await userEvent.tab({ shift: true });
 			const google = canvas.getByRole('link', { name: 'Google' });
-			expect(google).toBe(document.activeElement);
+			await expect(google).toBe(document.activeElement);
 		});
 	},
 };

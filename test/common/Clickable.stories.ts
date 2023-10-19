@@ -35,9 +35,9 @@ type Story = StoryObj<ClickableProps>;
 export const Click: Story = {
 	async play({ canvasElement }): Promise<void> {
 		const button = setup(canvasElement);
-		expect(button).toBeInstanceOf(Clickable);
+		await expect(button).toBeInstanceOf(Clickable);
 		await userEvent.click(button);
-		expect(onClick).toBeCalled();
+		await expect(onClick).toBeCalled();
 	}
 };
 
@@ -46,7 +46,7 @@ export const PressSpace: Story = {
 		const button = setup(canvasElement);
 		button.focus();
 		await userEvent.keyboard('{ }');
-		expect(onClick).toBeCalledTimes(1);
+		await expect(onClick).toBeCalledTimes(1);
 	}
 };
 
@@ -55,7 +55,7 @@ export const PressEnter: Story = {
 		const button = setup(canvasElement);
 		button.focus();
 		await userEvent.keyboard('{Enter}');
-		expect(onClick).toBeCalledTimes(1);
+		await expect(onClick).toBeCalledTimes(1);
 	}
 };
 
@@ -66,7 +66,7 @@ export const ClickDisabled: Story = {
 	async play({ canvasElement }): Promise<void> {
 		const button = setup(canvasElement);
 		await userEvent.click(button);
-		expect(onClick).not.toBeCalled();
-		expect(button).toHaveAttribute('aria-disabled', 'true');
+		await expect(onClick).not.toBeCalled();
+		await expect(button).toHaveAttribute('aria-disabled', 'true');
 	}
 };

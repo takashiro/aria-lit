@@ -26,28 +26,28 @@ export const Enabled: Story = {
 		await step('trigger it by mouse event', async () => {
 			onChange.mockClear();
 			await userEvent.click(screen.getByRole('button', { name: 'Bold' }));
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
-			expect(e.detail.pressed).toBe(true);
+			await expect(e.detail.pressed).toBe(true);
 			const button = screen.getByRole('button', { name: 'Bold', pressed: true });
-			expect(document.activeElement).toBe(button);
-			expect(button).toBeInstanceOf(ToggleButton);
+			await expect(document.activeElement).toBe(button);
+			await expect(button).toBeInstanceOf(ToggleButton);
 		});
 
 		await step('trigger it by space key', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{ }');
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const [e] = onChange.mock.calls[0];
-			expect(e.detail.pressed).toBe(false);
+			await expect(e.detail.pressed).toBe(false);
 		});
 
 		await step('trigger it by enter key', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{Enter}');
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const [e] = onChange.mock.calls[0];
-			expect(e.detail.pressed).toBe(true);
+			await expect(e.detail.pressed).toBe(true);
 		});
 	}
 };

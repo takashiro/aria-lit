@@ -24,31 +24,31 @@ export const Enabled: Story = {
 		onChange.mockClear();
 		const screen = within(canvasElement);
 		const swit = screen.getByRole('switch', { name: 'Toggle me!' });
-		expect(swit).toBeInstanceOf(Switch);
+		await expect(swit).toBeInstanceOf(Switch);
 
 		await step('can be triggered by mouse event', async () => {
 			await expect(swit).not.toBeChecked();
 			await userEvent.click(swit);
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
-			expect(e.detail.checked).toBe(true);
+			await expect(e.detail.checked).toBe(true);
 			await expect(swit).toBeChecked();
-			expect(document.activeElement).toBe(swit);
+			await expect(document.activeElement).toBe(swit);
 			onChange.mockClear();
 		});
 
 		await step('can be triggered by space key', async () => {
 			await userEvent.keyboard('{ }');
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
-			expect(e.detail.checked).toBe(false);
+			await expect(e.detail.checked).toBe(false);
 			await expect(swit).not.toBeChecked();
 			onChange.mockClear();
 		});
 
 		await step('cannot be triggered by enter key', async () => {
 			await userEvent.keyboard('{Enter}');
-			expect(onChange).not.toBeCalled();
+			await expect(onChange).not.toBeCalled();
 		});
 	}
 };

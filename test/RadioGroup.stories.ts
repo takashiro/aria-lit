@@ -31,34 +31,34 @@ export const Enabled: Story = {
 		await step('select a radio via mouse', async () => {
 			onChange.mockClear();
 			const radio = screen.getByRole('radio', { name: 'Green' });
-			expect(radio).toBeInstanceOf(Radio);
-			expect(radio.parentElement).toBeInstanceOf(RadioGroup);
+			await expect(radio).toBeInstanceOf(Radio);
+			await expect(radio.parentElement).toBeInstanceOf(RadioGroup);
 			await userEvent.click(radio);
-			expect(document.activeElement).toBe(radio);
-			expect(radio).toBeChecked();
-			expect(onChange).toBeCalledTimes(1);
+			await expect(document.activeElement).toBe(radio);
+			await expect(radio).toBeChecked();
+			await expect(onChange).toBeCalledTimes(1);
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(2);
+			await expect(event.detail.selected).toBe(2);
 		});
 
 		await step('select another radio via mouse', async () => {
 			onChange.mockClear();
 			const radio = screen.getByRole('radio', { name: 'Red' });
 			await userEvent.click(radio);
-			expect(document.activeElement).toBe(radio);
-			expect(onChange).toBeCalledTimes(1);
+			await expect(document.activeElement).toBe(radio);
+			await expect(onChange).toBeCalledTimes(1);
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(0);
+			await expect(event.detail.selected).toBe(0);
 		});
 
 		await step('select a radio via arrow down', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{ArrowDown}');
 			const radio = screen.getByRole('radio', { name: 'Green' });
-			expect(document.activeElement).toBe(radio);
-			expect(onChange).toBeCalledTimes(1);
+			await expect(document.activeElement).toBe(radio);
+			await expect(onChange).toBeCalledTimes(1);
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(2);
+			await expect(event.detail.selected).toBe(2);
 		});
 
 		await step('do not trigger change event if focus is moved to the selected radio', async () => {
@@ -66,35 +66,35 @@ export const Enabled: Story = {
 			const radio = screen.getByRole('radio', { name: 'Green' });
 
 			await userEvent.tab({ shift: true });
-			expect(document.activeElement).not.toBe(radio);
+			await expect(document.activeElement).not.toBe(radio);
 
 			await userEvent.tab();
-			expect(document.activeElement).toBe(radio);
-			expect(onChange).not.toBeCalled();
+			await expect(document.activeElement).toBe(radio);
+			await expect(onChange).not.toBeCalled();
 		});
 
 		await step('select a radio via arrow right', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{ArrowRight}');
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(6);
-			expect(document.activeElement?.textContent).toBe('Blue');
+			await expect(event.detail.selected).toBe(6);
+			await expect(document.activeElement?.textContent).toBe('Blue');
 		});
 
 		await step('select a radio via arrow left', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{ArrowLeft}');
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(2);
-			expect(document.activeElement?.textContent).toBe('Green');
+			await expect(event.detail.selected).toBe(2);
+			await expect(document.activeElement?.textContent).toBe('Green');
 		});
 
 		await step('can select a radio via arrow up', async () => {
 			onChange.mockClear();
 			await userEvent.keyboard('{ArrowUp}');
 			const [event] = onChange.mock.calls[0];
-			expect(event.detail.selected).toBe(0);
-			expect(document.activeElement?.textContent).toBe('Red');
+			await expect(event.detail.selected).toBe(0);
+			await expect(document.activeElement?.textContent).toBe('Red');
 		});
 	}
 };

@@ -24,31 +24,31 @@ export const Enabled: Story = {
 		onChange.mockClear();
 		const screen = within(canvasElement);
 		const checkbox = screen.getByRole('checkbox', { name: 'Toggle me!' });
-		expect(checkbox).toBeInstanceOf(Checkbox);
+		await expect(checkbox).toBeInstanceOf(Checkbox);
 
 		await step('can be triggered by mouse event', async () => {
 			await expect(checkbox).not.toBeChecked();
 			await userEvent.click(checkbox);
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
-			expect(e.detail.checked).toBe(true);
+			await expect(e.detail.checked).toBe(true);
 			await expect(checkbox).toBeChecked();
-			expect(document.activeElement).toBe(checkbox);
+			await expect(document.activeElement).toBe(checkbox);
 			onChange.mockClear();
 		});
 
 		await step('can be triggered by space key', async () => {
 			await userEvent.keyboard('{ }');
-			expect(onChange).toBeCalledTimes(1);
+			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
-			expect(e.detail.checked).toBe(false);
+			await expect(e.detail.checked).toBe(false);
 			await expect(checkbox).not.toBeChecked();
 			onChange.mockClear();
 		});
 
 		await step('cannot be triggered by enter key', async () => {
 			await userEvent.keyboard('{Enter}');
-			expect(onChange).not.toBeCalled();
+			await expect(onChange).not.toBeCalled();
 		});
 	}
 };

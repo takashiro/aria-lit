@@ -36,21 +36,21 @@ type Story = StoryObj<ButtonProps>;
 export const Enabled: Story = {
 	async play({ canvasElement, step }): Promise<void> {
 		const button = setup(canvasElement);
-		expect(button).toBeInstanceOf(Button);
+		await expect(button).toBeInstanceOf(Button);
 
 		await step('click', async () => {
 			await userEvent.click(button);
-			expect(onClick).toBeCalled();
+			await expect(onClick).toBeCalled();
 		});
 
 		await step('press Space', async () => {
 			await userEvent.keyboard('{ }');
-			expect(onClick).toBeCalledTimes(2);
+			await expect(onClick).toBeCalledTimes(2);
 		});
 
 		await step('press Enter', async () => {
 			await userEvent.keyboard('{Enter}');
-			expect(onClick).toBeCalledTimes(3);
+			await expect(onClick).toBeCalledTimes(3);
 		});
 	}
 };
@@ -62,6 +62,6 @@ export const Disabled: Story = {
 	async play({ canvasElement }): Promise<void> {
 		const button = setup(canvasElement);
 		await userEvent.click(button);
-		expect(onClick).not.toBeCalled();
+		await expect(onClick).not.toBeCalled();
 	}
 };

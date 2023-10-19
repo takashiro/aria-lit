@@ -12,7 +12,6 @@
 		"useDefineForClassFields": false
 	},
 	"include": [
-		"src/*.ts",
-		"src/common/*.ts"
+		"src"
 	]
 }
