@@ -33,7 +33,4 @@ jobs:
     - name: Install Chromium
       run: npx playwright install chromium --with-deps
     - name: Test
-      run: |
-        npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "node .storybook/serve.js" \
-          "npx wait-on tcp:6006 && npx test-storybook"
+      run: npx ts-node --esm .github/workflows/test.ts
