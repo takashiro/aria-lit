@@ -49,5 +49,5 @@ export const Enabled: Story = {
 			const [e] = onChange.mock.calls[0];
 			await expect(e.detail.pressed).toBe(true);
 		});
-	}
+	},
 };

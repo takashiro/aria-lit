@@ -1,4 +1,9 @@
-import { LitElement, type TemplateResult, html, nothing } from 'lit';
+import {
+	LitElement,
+	type TemplateResult,
+	html,
+	nothing,
+} from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
 import './Button';

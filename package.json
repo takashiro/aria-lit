@@ -9,7 +9,7 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "test": "npm run lint && test-storybook",
-    "lint": "eslint --ext=ts,js .",
+    "lint": "eslint --ext=ts,js,cjs,mjs .",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook"
   },
@@ -42,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "lit": "^3.0.0",
     "react": "^18.2.0",

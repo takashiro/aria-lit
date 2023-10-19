@@ -56,7 +56,7 @@ export abstract class CheckboxLike extends Clickable implements CheckboxLikeProp
 
 	#handleTrigger = (): void => {
 		this.toggle();
-	}
+	};
 }
 
 export default CheckboxLike;

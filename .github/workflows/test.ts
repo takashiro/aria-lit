@@ -6,7 +6,9 @@ const app = express();
 app.use(express.static('storybook-static'));
 const server = app.listen(6006);
 
+console.log('Wait for express server...');
 await waitOn({ resources: ['http://localhost:6006'] });
-cp.execSync('npm run test-storybook');
 
-server.close();
+console.log('Run tests...')
+const child = cp.spawn('npm', ['run', 'test-storybook'], { shell: true, stdio: 'inherit' });
+child.once('exit', () => server.close());

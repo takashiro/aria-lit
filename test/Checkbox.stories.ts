@@ -50,5 +50,5 @@ export const Enabled: Story = {
 			await userEvent.keyboard('{Enter}');
 			await expect(onChange).not.toBeCalled();
 		});
-	}
+	},
 };

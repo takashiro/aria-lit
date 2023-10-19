@@ -84,7 +84,7 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 			e.stopPropagation();
 			this.#select(target as Radio<T>);
 		}
-	}
+	};
 
 	#handleFocusIn = (e: Event): void => {
 		const { target } = e;
@@ -93,7 +93,7 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 			e.stopPropagation();
 			this.#select(target as Radio<T>);
 		}
-	}
+	};
 }
 
 export default RadioGroup;

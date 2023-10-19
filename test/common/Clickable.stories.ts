@@ -38,7 +38,7 @@ export const Click: Story = {
 		await expect(button).toBeInstanceOf(Clickable);
 		await userEvent.click(button);
 		await expect(onClick).toBeCalled();
-	}
+	},
 };
 
 export const PressSpace: Story = {
@@ -47,7 +47,7 @@ export const PressSpace: Story = {
 		button.focus();
 		await userEvent.keyboard('{ }');
 		await expect(onClick).toBeCalledTimes(1);
-	}
+	},
 };
 
 export const PressEnter: Story = {
@@ -56,7 +56,7 @@ export const PressEnter: Story = {
 		button.focus();
 		await userEvent.keyboard('{Enter}');
 		await expect(onClick).toBeCalledTimes(1);
-	}
+	},
 };
 
 export const ClickDisabled: Story = {
@@ -68,5 +68,5 @@ export const ClickDisabled: Story = {
 		await userEvent.click(button);
 		await expect(onClick).not.toBeCalled();
 		await expect(button).toHaveAttribute('aria-disabled', 'true');
-	}
+	},
 };

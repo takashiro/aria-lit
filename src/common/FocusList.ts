@@ -73,7 +73,7 @@ const getForwardKeys = (orientation?: Orientation): string[] => {
 		return ['ArrowRight'];
 	}
 	return ['ArrowRight', 'ArrowDown'];
-}
+};
 
 const getBackwardKeys = (orientation?: Orientation): string[] => {
 	if (orientation === 'portrait') {
@@ -83,7 +83,7 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 		return ['ArrowLeft'];
 	}
 	return ['ArrowUp', 'ArrowLeft'];
-}
+};
 
 @customElement('karuta-focuslist')
 export class FocusList extends HTMLElement implements FocusListProps {
@@ -124,7 +124,7 @@ export class FocusList extends HTMLElement implements FocusListProps {
 				next.focus();
 			}
 		}
-	}
+	};
 }
 
 export default FocusList;

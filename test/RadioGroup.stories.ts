@@ -3,7 +3,9 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { RadioGroup, Radio, type RadioGroupProps, type ChangeEvent } from '../src/RadioGroup';
+import {
+	RadioGroup, Radio, type RadioGroupProps, type ChangeEvent,
+} from '../src/RadioGroup';
 
 const onChange = jest.fn<void, [ChangeEvent<number>]>();
 
@@ -96,5 +98,5 @@ export const Enabled: Story = {
 			await expect(event.detail.selected).toBe(0);
 			await expect(document.activeElement?.textContent).toBe('Red');
 		});
-	}
+	},
 };

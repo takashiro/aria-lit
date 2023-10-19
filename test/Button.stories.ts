@@ -52,7 +52,7 @@ export const Enabled: Story = {
 			await userEvent.keyboard('{Enter}');
 			await expect(onClick).toBeCalledTimes(3);
 		});
-	}
+	},
 };
 
 export const Disabled: Story = {
@@ -63,5 +63,5 @@ export const Disabled: Story = {
 		const button = setup(canvasElement);
 		await userEvent.click(button);
 		await expect(onClick).not.toBeCalled();
-	}
+	},
 };

@@ -53,7 +53,7 @@ export class ToggleButton extends Button implements ToggleButtonProps {
 
 	#handleTrigger = (): void => {
 		this.toggle();
-	}
+	};
 }
 
 export default ToggleButton;

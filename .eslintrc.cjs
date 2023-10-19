@@ -4,6 +4,7 @@ module.exports = {
 		node: true,
 	},
 	extends: [
+		'airbnb-base',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:storybook/recommended',
@@ -19,6 +20,7 @@ module.exports = {
 	],
 	rules: {
 		'consistent-return': 'off',
+		'import/extensions': 'off',
 		'import/no-unresolved': 'off',
 		indent: [
 			'error',
@@ -38,6 +40,10 @@ module.exports = {
 		'no-use-before-define': 'off',
 		'no-useless-constructor': 'off',
 		semi: 'off',
+		'@typescript-eslint/indent': [
+			'error',
+			'tab',
+		],
 		'@typescript-eslint/no-use-before-define': 'error',
 		'@typescript-eslint/no-useless-constructor': 'error',
 	},

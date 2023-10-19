@@ -41,7 +41,7 @@ export class Clickable extends HTMLElement implements ClickableProps {
 		}
 
 		this.#trigger();
-	}
+	};
 
 	#handleKeyDown = (e: KeyboardEvent): void => {
 		if (this.disabled || e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
@@ -51,7 +51,7 @@ export class Clickable extends HTMLElement implements ClickableProps {
 		if (this.keys.includes(e.key)) {
 			this.#trigger();
 		}
-	}
+	};
 
 	#trigger(): void {
 		this.dispatchEvent(new CustomEvent('trigger', {
