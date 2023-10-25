@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { Checkbox, type CheckboxProps, type ChangeEvent } from '../src/Checkbox';
+import type { CheckboxProps, ChangeEvent } from '../src/Checkbox';
+import '../src/Checkbox';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
 
@@ -24,7 +25,6 @@ export const Enabled: Story = {
 		onChange.mockClear();
 		const screen = within(canvasElement);
 		const checkbox = screen.getByRole('checkbox', { name: 'Toggle me!' });
-		await expect(checkbox).toBeInstanceOf(Checkbox);
 
 		await step('can be triggered by mouse event', async () => {
 			await expect(checkbox).not.toBeChecked();

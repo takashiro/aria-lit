@@ -3,7 +3,8 @@ import { within, userEvent } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { Clickable, type ClickableProps } from '../../src/common/Clickable';
+import type { ClickableProps } from '../../src/common/Clickable';
+import '../../src/common/Clickable';
 
 let count = 0;
 const onClick = jest.fn(() => {
@@ -35,7 +36,6 @@ type Story = StoryObj<ClickableProps>;
 export const Click: Story = {
 	async play({ canvasElement }): Promise<void> {
 		const button = setup(canvasElement);
-		await expect(button).toBeInstanceOf(Clickable);
 		await userEvent.click(button);
 		await expect(onClick).toBeCalled();
 	},

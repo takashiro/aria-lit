@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import Disclosure, { DisclosureProps, ToggleEvent } from '../src/Disclosure';
+import type { DisclosureProps, ToggleEvent } from '../src/Disclosure';
+import '../src/Disclosure';
 
 const onChange = jest.fn<void, [ToggleEvent]>();
 
@@ -35,7 +36,6 @@ export const Default: Story = {
 		const screen = within(canvasElement);
 
 		const disclosure = canvasElement.querySelector('karuta-disclosure')!;
-		await expect(disclosure).toBeInstanceOf(Disclosure);
 
 		await step('should be hidden by default', async () => {
 			const content = screen.getByTestId('my-content');

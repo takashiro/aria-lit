@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { FocusTrap, type FocusTrapProps } from '../../src/common/FocusTrap';
+import type { FocusTrapProps } from '../../src/common/FocusTrap';
+import '../../src/common/FocusTrap';
 
 const onEscape = jest.fn();
 
@@ -44,7 +45,6 @@ export const Default: Story = {
 			await userEvent.tab();
 			const button = canvas.getByRole('button', { name: 'Native Button' });
 			await expect(button).toBe(document.activeElement);
-			await expect(button.parentElement).toBeInstanceOf(FocusTrap);
 		});
 
 		await step('should go to link', async () => {

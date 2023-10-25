@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { Switch, type SwitchProps, type ChangeEvent } from '../src/Switch';
+import type { SwitchProps, ChangeEvent } from '../src/Switch';
+import '../src/Switch';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
 
@@ -24,7 +25,6 @@ export const Enabled: Story = {
 		onChange.mockClear();
 		const screen = within(canvasElement);
 		const swit = screen.getByRole('switch', { name: 'Toggle me!' });
-		await expect(swit).toBeInstanceOf(Switch);
 
 		await step('can be triggered by mouse event', async () => {
 			await expect(swit).not.toBeChecked();

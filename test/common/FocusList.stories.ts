@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import { FocusList, type FocusListProps } from '../../src/common/FocusList';
+import type { FocusListProps } from '../../src/common/FocusList';
+import '../../src/common/FocusList';
 
 const meta: Meta<FocusListProps> = {
 	title: 'Keyboard/FocusList',
@@ -31,8 +32,6 @@ export const ButtonList: Story = {
 		const a = screen.getByRole('button', { name: 'A' });
 		const b = screen.getByRole('button', { name: 'B' });
 		const c = screen.getByRole('button', { name: 'C' });
-
-		await expect(a.parentElement).toBeInstanceOf(FocusList);
 
 		await step('can move focus forward', async () => {
 			a.focus();

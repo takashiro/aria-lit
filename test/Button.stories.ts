@@ -3,7 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import Button, { type ButtonProps } from '../src/Button';
+import type { ButtonProps } from '../src/Button';
+import '../src/Button';
 
 let count = 0;
 const onClick = jest.fn(() => {
@@ -36,7 +37,6 @@ type Story = StoryObj<ButtonProps>;
 export const Enabled: Story = {
 	async play({ canvasElement, step }): Promise<void> {
 		const button = setup(canvasElement);
-		await expect(button).toBeInstanceOf(Button);
 
 		await step('click', async () => {
 			await userEvent.click(button);

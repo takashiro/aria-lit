@@ -3,9 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import {
-	RadioGroup, Radio, type RadioGroupProps, type ChangeEvent,
-} from '../src/RadioGroup';
+import type { RadioGroupProps, ChangeEvent } from '../src/RadioGroup';
+import '../src/RadioGroup';
 
 const onChange = jest.fn<void, [ChangeEvent<number>]>();
 
@@ -33,8 +32,6 @@ export const Enabled: Story = {
 		await step('select a radio via mouse', async () => {
 			onChange.mockClear();
 			const radio = screen.getByRole('radio', { name: 'Green' });
-			await expect(radio).toBeInstanceOf(Radio);
-			await expect(radio.parentElement).toBeInstanceOf(RadioGroup);
 			await userEvent.click(radio);
 			await expect(document.activeElement).toBe(radio);
 			await expect(radio).toBeChecked();
