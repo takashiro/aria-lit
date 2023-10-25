@@ -1,0 +1,11 @@
+karuta-tooltip {
+	display: none;
+	border: gray 1px solid;
+	border-radius: 4px;
+	position: fixed;
+	padding: 0.5em 1em;
+
+	&[data-state="open"] {
+		display: block;
+	}
+}
