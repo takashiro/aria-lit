@@ -11,4 +11,9 @@ await waitOn({ resources: ['http://localhost:6006'] });
 
 console.log('Run tests...')
 const child = cp.spawn('npm', ['run', 'test-storybook'], { shell: true, stdio: 'inherit' });
-child.once('exit', () => server.close());
+child.once('exit', (exitCode) => {
+	server.close();
+	if (exitCode) {
+		process.exit(exitCode);
+	}
+});
