@@ -1,5 +1,5 @@
 {
-  "name": "@karuta/aria-lit",
+  "name": "@cindi/aria-lit",
   "version": "0.0.0",
   "description": "Commonly used components with no CSS styles",
   "main": "index.js",

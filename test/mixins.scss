@@ -1,0 +1,24 @@
+@import './colors';
+
+@mixin button {
+	display: inline-block;
+	cursor: pointer;
+	user-select: none;
+	border-radius: 7px;
+	color: $interactive-text;
+	background: $interactive-normal;
+	padding: 0.5em 0.8em;
+
+	&:hover {
+		background: $interactive-hover;
+	}
+
+	&:active {
+		background: $interactive-active;
+	}
+
+	&[aria-disabled="true"] {
+		cursor: not-allowed;
+		background: lightslategray;
+	}
+}

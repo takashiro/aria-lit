@@ -6,7 +6,7 @@ import { html } from 'lit/html.js';
 import type { TooltipProps } from '../src/Tooltip';
 import '../src/Tooltip';
 
-import './Tooltip.stories.scss';
+import './Tooltip.scss';
 
 const meta: Meta<TooltipProps> = {
 	title: 'Widgets/Tooltip',

@@ -5,6 +5,7 @@ import { html } from 'lit/html.js';
 
 import type { ButtonProps } from '../src/Button';
 import '../src/Button';
+import './Button.scss';
 
 let count = 0;
 const onClick = jest.fn(() => {
@@ -15,6 +16,9 @@ const onClick = jest.fn(() => {
 const meta: Meta<ButtonProps> = {
 	title: 'Controls/Button',
 	tags: ['autodocs'],
+	args: {
+		disabled: false,
+	},
 	render: ({ disabled }) => html`
 		<karuta-button @trigger=${onClick} .disabled=${disabled}>
 			Click Me!

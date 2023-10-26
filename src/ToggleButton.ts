@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import Button from './Button';
+import Button, { type ButtonProps } from './Button';
 
 type PressedState = boolean | 'mixed';
 
@@ -13,7 +13,7 @@ export interface ChangeEventInit {
 
 export type ChangeEvent = CustomEvent<ChangeEventInit>;
 
-export interface ToggleButtonProps {
+export interface ToggleButtonProps extends ButtonProps {
 	/**
 	 * Whether the button is pressed.
 	 */
@@ -30,6 +30,10 @@ export class ToggleButton extends Button implements ToggleButtonProps {
 	pressed?: PressedState;
 
 	toggle(): void {
+		if (this.disabled) {
+			return;
+		}
+
 		this.pressed = !this.pressed;
 		this.ariaPressed = String(this.pressed);
 		this.dispatchEvent(new CustomEvent<ChangeEventInit>('change', {

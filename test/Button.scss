@@ -1,0 +1,9 @@
+@import './mixins';
+
+karuta-button {
+	@include button;
+}
+
+#message-box {
+	margin: 10px 0;
+}

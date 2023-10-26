@@ -5,14 +5,21 @@ import { html } from 'lit/html.js';
 
 import type { ToggleButtonProps, ChangeEvent } from '../src/ToggleButton';
 import '../src/ToggleButton';
+import './ToggleButton.scss';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
 
 const meta: Meta<ToggleButtonProps> = {
 	title: 'Controls/ToggleButton',
 	tags: ['autodocs'],
-	render: () => html`
-		<karuta-togglebutton @change=${onChange}>Bold</karuta-togglebutton>
+	args: {
+		disabled: false,
+	},
+	argTypes: {
+		disabled: Boolean,
+	},
+	render: ({ disabled }) => html`
+		<karuta-togglebutton .disabled=${disabled} @change=${onChange}>B</karuta-togglebutton>
 	`,
 };
 
@@ -26,11 +33,11 @@ export const Enabled: Story = {
 
 		await step('trigger it by mouse event', async () => {
 			onChange.mockClear();
-			await userEvent.click(screen.getByRole('button', { name: 'Bold' }));
+			await userEvent.click(screen.getByRole('button', { name: 'B' }));
 			await expect(onChange).toBeCalledTimes(1);
 			const e = onChange.mock.calls[0][0];
 			await expect(e.detail.pressed).toBe(true);
-			const button = screen.getByRole('button', { name: 'Bold', pressed: true });
+			const button = screen.getByRole('button', { name: 'B', pressed: true });
 			await expect(document.activeElement).toBe(button);
 		});
 
@@ -48,6 +55,32 @@ export const Enabled: Story = {
 			await expect(onChange).toBeCalledTimes(1);
 			const [e] = onChange.mock.calls[0];
 			await expect(e.detail.pressed).toBe(true);
+		});
+	},
+};
+
+export const Disabled: Story = {
+	args: {
+		disabled: true,
+	},
+
+	async play({ canvasElement, step }): Promise<void> {
+		const screen = within(canvasElement);
+		onChange.mockClear();
+
+		await step('trigger it by mouse event', async () => {
+			await userEvent.click(screen.getByRole('button', { name: 'B' }));
+			await expect(onChange).not.toBeCalled();
+		});
+
+		await step('trigger it by space key', async () => {
+			await userEvent.keyboard('{ }');
+			await expect(onChange).not.toBeCalled();
+		});
+
+		await step('trigger it by enter key', async () => {
+			await userEvent.keyboard('{Enter}');
+			await expect(onChange).not.toBeCalled();
 		});
 	},
 };

@@ -1,0 +1,13 @@
+@import './mixins';
+
+karuta-togglebutton {
+	@include button;
+	background-color: $interactive-hover;
+	width: 1em;
+	text-align: center;
+
+	&[aria-pressed="true"] {
+		font-weight: bold;
+		background-color: $interactive-active;
+	}
+}
