@@ -13,11 +13,11 @@ const meta: Meta<RadioGroupProps<number>> = {
 	tags: ['autodocs'],
 	render: () => html`
 		<div id="my-question">Which color do you like?</div>
-		<karuta-radiogroup @change=${onChange} aria-labelledby="my-question">
-			<karuta-radio .value=${0}>Red</karuta-radio>
-			<karuta-radio .value=${2}>Green</karuta-radio>
-			<karuta-radio .value=${6}>Blue</karuta-radio>
-		</karuta-radiogroup>
+		<cindi-radiogroup @change=${onChange} aria-labelledby="my-question">
+			<cindi-radio .value=${0}>Red</cindi-radio>
+			<cindi-radio .value=${2}>Green</cindi-radio>
+			<cindi-radio .value=${6}>Blue</cindi-radio>
+		</cindi-radiogroup>
 	`,
 };
 

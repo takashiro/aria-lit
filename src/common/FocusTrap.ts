@@ -34,7 +34,7 @@ export interface FocusTrapProps {
  * The focus goes from the last interactive element to the first if it reaches the end.
  * It also goes from the first to the last vice versa.
  */
-@customElement('karuta-focustrap')
+@customElement('cindi-focustrap')
 export class FocusTrap extends HTMLElement implements FocusTrapProps {
 	pattern?: string;
 
@@ -70,6 +70,6 @@ export default FocusTrap;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-focustrap': FocusTrap;
+		'cindi-focustrap': FocusTrap;
 	}
 }

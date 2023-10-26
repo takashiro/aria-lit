@@ -20,9 +20,9 @@ const meta: Meta<ButtonProps> = {
 		disabled: false,
 	},
 	render: ({ disabled }) => html`
-		<karuta-button @trigger=${onClick} .disabled=${disabled}>
+		<cindi-button @trigger=${onClick} .disabled=${disabled}>
 			Click Me!
-		</karuta-button>
+		</cindi-button>
 		<div id="message-box" role="status"></div>
 	`,
 };

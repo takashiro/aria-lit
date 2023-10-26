@@ -12,7 +12,7 @@ const meta: Meta<CheckboxProps> = {
 	title: 'Widgets/Checkbox',
 	tags: ['autodocs'],
 	render: () => html`
-		<karuta-checkbox @change=${onChange}>Toggle me!</karuta-checkbox>
+		<cindi-checkbox @change=${onChange}>Toggle me!</cindi-checkbox>
 	`,
 };
 

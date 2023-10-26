@@ -1,6 +1,6 @@
 @import './mixins';
 
-karuta-togglebutton {
+cindi-togglebutton {
 	@include button;
 	background-color: $interactive-hover;
 	width: 1em;

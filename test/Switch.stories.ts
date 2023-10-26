@@ -12,7 +12,7 @@ const meta: Meta<SwitchProps> = {
 	title: 'Widgets/Switch',
 	tags: ['autodocs'],
 	render: () => html`
-		<karuta-switch @change=${onChange}>Toggle me!</karuta-switch>
+		<cindi-switch @change=${onChange}>Toggle me!</cindi-switch>
 	`,
 };
 

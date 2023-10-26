@@ -25,7 +25,7 @@ export interface ToggleButtonProps extends ButtonProps {
  *
  * A two-state button that can be either off (not pressed) or on (pressed).
  */
-@customElement('karuta-togglebutton')
+@customElement('cindi-togglebutton')
 export class ToggleButton extends Button implements ToggleButtonProps {
 	pressed?: PressedState;
 
@@ -64,6 +64,6 @@ export default ToggleButton;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-togglebutton': ToggleButton;
+		'cindi-togglebutton': ToggleButton;
 	}
 }

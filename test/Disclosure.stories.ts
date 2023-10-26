@@ -12,7 +12,7 @@ const meta: Meta<DisclosureProps> = {
 	title: 'Widgets/Disclosure',
 	tags: ['autodocs'],
 	render: () => html`
-		<karuta-disclosure @change=${onChange}>
+		<cindi-disclosure @change=${onChange}>
 			<span slot="trigger">Toggle me!</span>
 			<p data-testid="my-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -21,7 +21,7 @@ const meta: Meta<DisclosureProps> = {
 				in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
 				sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
 				mollit anim id est laborum.</p>
-		</karuta-disclosure>
+		</cindi-disclosure>
 	`,
 };
 
@@ -35,7 +35,7 @@ export const Default: Story = {
 
 		const screen = within(canvasElement);
 
-		const disclosure = canvasElement.querySelector('karuta-disclosure')!;
+		const disclosure = canvasElement.querySelector('cindi-disclosure')!;
 
 		await step('should be hidden by default', async () => {
 			const content = screen.getByTestId('my-content');

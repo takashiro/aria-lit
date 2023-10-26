@@ -10,7 +10,7 @@ export interface ClickableProps {
 /**
  * A clickable element, used to implement buttons, checkboxes or anything can be clicked.
  */
-@customElement('karuta-clickable')
+@customElement('cindi-clickable')
 export class Clickable extends HTMLElement implements ClickableProps {
 	disabled?: boolean;
 

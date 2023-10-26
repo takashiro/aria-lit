@@ -7,7 +7,7 @@ import CheckboxLike from './common/CheckboxLike';
  *
  * A switch is an input widget that allows users to choose one of two values: on or off.
  */
-@customElement('karuta-switch')
+@customElement('cindi-switch')
 export class Switch extends CheckboxLike {
 	role = 'switch';
 }
@@ -22,6 +22,6 @@ export type {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-switch': Switch;
+		'cindi-switch': Switch;
 	}
 }

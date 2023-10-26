@@ -13,9 +13,9 @@ const meta: Meta<TooltipProps> = {
 	tags: ['autodocs'],
 	render: () => html`
 		<button type="button">Hover me.</button>
-		<karuta-tooltip>
+		<cindi-tooltip>
 			This is why the button is here.
-		</karuta-tooltip>
+		</cindi-tooltip>
 	`,
 };
 

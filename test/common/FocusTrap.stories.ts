@@ -14,7 +14,7 @@ const meta: Meta<FocusTrapProps> = {
 	render: ({ pattern }) => html`
 		<button type="button">Before</button>
 		<p>--- Focus Trap ---</p>
-		<karuta-focustrap .pattern=${pattern} @escape=${onEscape}>
+		<cindi-focustrap .pattern=${pattern} @escape=${onEscape}>
 			<button type="button">Native Button</button>
 			<a id="anchor">Page Anchor</a>
 			<a href="https://www.google.com">Google</a>
@@ -22,7 +22,7 @@ const meta: Meta<FocusTrapProps> = {
 			<input type="text" aria-label="User Name">
 			<textarea aria-label="Note"></textarea>
 			<div role="checkbox" tabIndex="0" aria-label="Toggle" aria-checked style="width: 10px; height: 10px"></div>
-		</karuta-focustrap>
+		</cindi-focustrap>
 		<p>--- Focus Trap ---</p>
 		<button type="button">After</button>
 	`,

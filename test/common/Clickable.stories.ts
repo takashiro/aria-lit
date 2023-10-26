@@ -16,9 +16,9 @@ const meta: Meta<ClickableProps> = {
 	title: 'Keyboard/Clickable',
 	tags: ['autodocs'],
 	render: ({ disabled }) => html`
-		<karuta-clickable role="button" @trigger=${onClick} .disabled=${disabled}>
+		<cindi-clickable role="button" @trigger=${onClick} .disabled=${disabled}>
 			Click Me!
-		</karuta-clickable>
+		</cindi-clickable>
 		<div id="message-box" role="status"></div>
 	`,
 };

@@ -14,7 +14,7 @@ export interface RadioProps<T> {
 	value?: T;
 }
 
-@customElement('karuta-radio')
+@customElement('cindi-radio')
 export class Radio<T> extends Clickable implements RadioProps<T> {
 	static observedAttributes = ['value'];
 
@@ -40,6 +40,6 @@ export default Radio;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-radio': Radio<unknown>;
+		'cindi-radio': Radio<unknown>;
 	}
 }

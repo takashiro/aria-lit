@@ -12,11 +12,11 @@ const meta: Meta<FocusListProps> = {
 	render: ({ circular, orientation }) => html`
 		<button type="button">Before</button>
 		<hr>
-		<karuta-focuslist .selector="button" .circular=${circular} .orientation=${orientation}>
+		<cindi-focuslist .selector="button" .circular=${circular} .orientation=${orientation}>
 				<button type="button" tabindex="-1">A</button>
 				<button type="button" tabindex="-1">B</button>
 				<button type="button" tabindex="-1">C</button>
-		</karuta-focuslist>
+		</cindi-focuslist>
 		<hr>
 		<button type="button">After</button>
 	`,

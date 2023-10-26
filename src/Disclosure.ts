@@ -44,7 +44,7 @@ export interface DisclosureProps {
  * display additional content. When the content is visible, the arrow or triangle
  * typically points down.
  */
-@customElement('karuta-disclosure')
+@customElement('cindi-disclosure')
 export class Disclosure extends LitElement implements DisclosureProps {
 	trigger?: string;
 
@@ -65,9 +65,9 @@ export class Disclosure extends LitElement implements DisclosureProps {
 
 	render(): TemplateResult<1> {
 		return html`
-			<karuta-button @trigger=${this.#handleTrigger} aria-expanded=${this.expanded} aria-controls=${this.contentId}>
+			<cindi-button @trigger=${this.#handleTrigger} aria-expanded=${this.expanded} aria-controls=${this.contentId}>
 				<slot name="trigger"></slot>
-			</karuta-button>
+			</cindi-button>
 			<div id=${this.contentId} class=${(this.expanded ? 'expanded' : 'collapsed')}>
 				${this.expanded ? html`<slot></slot>` : nothing}
 			</div>
@@ -79,6 +79,6 @@ export default Disclosure;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-disclosure': Disclosure;
+		'cindi-disclosure': Disclosure;
 	}
 }

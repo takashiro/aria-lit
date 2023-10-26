@@ -85,7 +85,7 @@ const getBackwardKeys = (orientation?: Orientation): string[] => {
 	return ['ArrowUp', 'ArrowLeft'];
 };
 
-@customElement('karuta-focuslist')
+@customElement('cindi-focuslist')
 export class FocusList extends HTMLElement implements FocusListProps {
 	selector?: string;
 
@@ -131,6 +131,6 @@ export default FocusList;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-focuslist': FocusList;
+		'cindi-focuslist': FocusList;
 	}
 }

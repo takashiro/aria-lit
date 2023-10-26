@@ -19,7 +19,7 @@ const meta: Meta<ToggleButtonProps> = {
 		disabled: Boolean,
 	},
 	render: ({ disabled }) => html`
-		<karuta-togglebutton .disabled=${disabled} @change=${onChange}>B</karuta-togglebutton>
+		<cindi-togglebutton .disabled=${disabled} @change=${onChange}>B</cindi-togglebutton>
 	`,
 };
 

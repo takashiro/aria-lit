@@ -20,7 +20,7 @@ export interface TooltipProps {
  * Tooltip widgets do not receive focus. A hover that contains
  * focusable elements can be made using a non-modal dialog.
  */
-@customElement('karuta-tooltip')
+@customElement('cindi-tooltip')
 export default class Tooltip extends HTMLElement implements TooltipProps {
 	trigger?: HTMLElement;
 
@@ -83,6 +83,6 @@ export default class Tooltip extends HTMLElement implements TooltipProps {
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-tooltip': Tooltip;
+		'cindi-tooltip': Tooltip;
 	}
 }

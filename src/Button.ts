@@ -14,7 +14,7 @@ import { Clickable } from './common/Clickable';
  * that a button launches a dialog is
  * to append "…" (ellipsis) to the button label, e.g., "Save as…".
  */
-@customElement('karuta-button')
+@customElement('cindi-button')
 export class Button extends Clickable {
 	role = 'button';
 }
@@ -25,6 +25,6 @@ export default Button;
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-button': Button;
+		'cindi-button': Button;
 	}
 }

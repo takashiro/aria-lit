@@ -29,7 +29,7 @@ export interface RadioGroupProps<T> {
  * A radio group is a set of checkable buttons, known as radio buttons,
  * where no more than one of the buttons can be checked at a time.
  */
-@customElement('karuta-radiogroup')
+@customElement('cindi-radiogroup')
 export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 	role = 'radiogroup';
 
@@ -102,6 +102,6 @@ export { Radio } from './Radio';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'karuta-radiogroup': RadioGroup<unknown>;
+		'cindi-radiogroup': RadioGroup<unknown>;
 	}
 }
