@@ -15,22 +15,29 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18.x
+          - 20.x
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    -
+      name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install
+    -
+      name: Install
       run: npm ci
-    - name: Lint
+    -
+      name: Lint
       run: npm run lint
-    - name: Build
+    -
+      name: Build
       run: npm run build
-    - name: Build storybook
+    -
+      name: Build storybook
       run: npm run build-storybook
-    - name: Install Chromium
+    -
+      name: Install Chromium
       run: npx playwright install chromium --with-deps
-    - name: Test
+    -
+      name: Test
       run: npx ts-node --esm .github/workflows/test.ts

@@ -2,7 +2,7 @@
   "name": "@cindi/aria-lit",
   "version": "0.0.0",
   "description": "Commonly used components with no CSS styles",
-  "main": "index.js",
+  "main": "dist",
   "type": "module",
   "scripts": {
     "start": "storybook dev -p 6006",
