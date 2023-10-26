@@ -40,4 +40,6 @@ jobs:
       run: npx playwright install chromium --with-deps
     -
       name: Test
-      run: npx ts-node --esm .github/workflows/test.ts
+      run: |
+        npm i -D ts-node
+        node --loader ts-node/esm .github/workflows/test.ts
