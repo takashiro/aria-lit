@@ -9,7 +9,13 @@
 		"esModuleInterop": true,
 		"strict": true,
     "experimentalDecorators": true,
-		"useDefineForClassFields": false
+		"useDefineForClassFields": false,
+		"plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true,
+			}
+		]
 	},
 	"include": [
 		"src"

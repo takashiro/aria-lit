@@ -1,5 +1,9 @@
 import { customElement } from 'lit/decorators.js';
 
+export type TriggerEvent = CustomEvent<Record<string, never>>;
+
+export type TriggerEventHandler = (e: TriggerEvent) => void;
+
 export interface ClickableProps {
 	/**
 	 * Whether the clickable element is disabled.

@@ -19,7 +19,11 @@ export class Button extends Clickable {
 	role = 'button';
 }
 
-export { type ClickableProps as ButtonProps } from './common/Clickable';
+export {
+	type ClickableProps as ButtonProps,
+	type TriggerEvent,
+	type TriggerEventHandler,
+} from './common/Clickable';
 
 export default Button;
 

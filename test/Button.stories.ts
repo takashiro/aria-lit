@@ -3,12 +3,12 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import type { ButtonProps } from '../src/Button';
+import type { ButtonProps, TriggerEvent, TriggerEventHandler } from '../src/Button';
 import '../src/Button';
 import './Button.scss';
 
 let count = 0;
-const onClick = jest.fn(() => {
+const onClick = jest.fn<void, [TriggerEvent]>(() => {
 	count++;
 	document.getElementById('message-box')!.textContent = `You clicked it (${count}).`;
 });
@@ -20,7 +20,7 @@ const meta: Meta<ButtonProps> = {
 		disabled: false,
 	},
 	render: ({ disabled }) => html`
-		<cindi-button @trigger=${onClick} .disabled=${disabled}>
+		<cindi-button @trigger=${onClick as TriggerEventHandler} .disabled=${disabled}>
 			Click Me!
 		</cindi-button>
 		<div id="message-box" role="status"></div>
