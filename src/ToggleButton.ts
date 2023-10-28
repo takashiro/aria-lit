@@ -13,6 +13,8 @@ export interface ChangeEventInit {
 
 export type ChangeEvent = CustomEvent<ChangeEventInit>;
 
+export type ChangeEventHandler = (e: ChangeEvent) => void;
+
 export interface ToggleButtonProps extends ButtonProps {
 	/**
 	 * Whether the button is pressed.

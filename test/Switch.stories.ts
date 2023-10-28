@@ -3,7 +3,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import type { SwitchProps, ChangeEvent } from '../src/Switch';
+import type { SwitchProps, ChangeEvent, ChangeEventHandler } from '../src/Switch';
 import '../src/Switch';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
@@ -12,7 +12,7 @@ const meta: Meta<SwitchProps> = {
 	title: 'Widgets/Switch',
 	tags: ['autodocs'],
 	render: () => html`
-		<cindi-switch @change=${onChange}>Toggle me!</cindi-switch>
+		<cindi-switch @change=${onChange as ChangeEventHandler}>Toggle me!</cindi-switch>
 	`,
 };
 

@@ -3,7 +3,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import type { ToggleButtonProps, ChangeEvent } from '../src/ToggleButton';
+import type { ToggleButtonProps, ChangeEvent, ChangeEventHandler } from '../src/ToggleButton';
 import '../src/ToggleButton';
 import './ToggleButton.scss';
 
@@ -19,7 +19,7 @@ const meta: Meta<ToggleButtonProps> = {
 		disabled: Boolean,
 	},
 	render: ({ disabled }) => html`
-		<cindi-togglebutton .disabled=${disabled} @change=${onChange}>B</cindi-togglebutton>
+		<cindi-togglebutton .disabled=${disabled} @change=${onChange as ChangeEventHandler}>B</cindi-togglebutton>
 	`,
 };
 

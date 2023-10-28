@@ -1,0 +1,30 @@
+#toast-viewport {
+	width: 60vw;
+	position: fixed;
+	top: 50px;
+	left: 50vw;
+	transform: translateX(-50%);
+}
+
+cindi-toast {
+	display: block;
+	color: white;
+	background: forestgreen;
+	border-radius: 7px;
+	padding: 0.7em 0.9em;
+	text-align: center;
+	margin: 10px 0;
+	position: relative;
+	top: 15px;
+	opacity: 1;
+	transition: top 100ms linear, opacity 100ms linear;
+
+	&[data-state="enter"] {
+		top: 0;
+	}
+
+	&[data-state="leave"] {
+		opacity: 0;
+		top: -15px;
+	}
+}
