@@ -1,6 +1,6 @@
 {
   "name": "@cindi/aria-lit",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Commonly used components with no CSS styles",
   "main": "dist",
   "type": "module",
