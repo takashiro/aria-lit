@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import findElements from '../dom/findElements';
+import findElements from '../dom/findElements.js';
 
 const interactives: string[] = ['button', 'a[href]', 'input', 'textarea', '[tabindex]'];
 const defaultPattern = interactives.map((selector) => `${selector}:not([tabindex="-1"])`).join(', ');

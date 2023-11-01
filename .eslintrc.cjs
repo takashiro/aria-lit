@@ -20,7 +20,10 @@ module.exports = {
 	],
 	rules: {
 		'consistent-return': 'off',
-		'import/extensions': 'off',
+		'import/extensions': [
+			'error',
+			'always',
+		],
 		'import/no-unresolved': 'off',
 		indent: [
 			'error',

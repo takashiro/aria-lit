@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { FocusTrapProps } from '../../src/common/FocusTrap';
-import '../../src/common/FocusTrap';
+import '../../src/common/FocusTrap.js';
 
 const onEscape = jest.fn();
 

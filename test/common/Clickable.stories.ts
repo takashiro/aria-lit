@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { ClickableProps } from '../../src/common/Clickable';
-import '../../src/common/Clickable';
+import '../../src/common/Clickable.js';
 
 let count = 0;
 const onClick = jest.fn(() => {

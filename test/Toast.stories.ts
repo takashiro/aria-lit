@@ -4,7 +4,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import type { ToastProps } from '../src/Toast';
-import Toast from '../src/Toast';
+import Toast from '../src/Toast.js';
 import './Toast.scss';
 
 function showToast(duration?: number): void {

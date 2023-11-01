@@ -3,8 +3,8 @@ import { userEvent, within } from '@storybook/testing-library';
 import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
-import type { CheckboxProps, ChangeEvent } from '../src/Checkbox';
-import '../src/Checkbox';
+import type { CheckboxProps, ChangeEvent, ChangeEventHandler } from '../src/Checkbox';
+import '../src/Checkbox.js';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
 
@@ -12,7 +12,7 @@ const meta: Meta<CheckboxProps> = {
 	title: 'Widgets/Checkbox',
 	tags: ['autodocs'],
 	render: () => html`
-		<cindi-checkbox @change=${onChange}>Toggle me!</cindi-checkbox>
+		<cindi-checkbox @change=${onChange as ChangeEventHandler}>Toggle me!</cindi-checkbox>
 	`,
 };
 

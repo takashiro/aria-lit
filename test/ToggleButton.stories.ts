@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { ToggleButtonProps, ChangeEvent, ChangeEventHandler } from '../src/ToggleButton';
-import '../src/ToggleButton';
+import '../src/ToggleButton.js';
 import './ToggleButton.scss';
 
 const onChange = jest.fn<void, [ChangeEvent]>();

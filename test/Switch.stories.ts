@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { SwitchProps, ChangeEvent, ChangeEventHandler } from '../src/Switch';
-import '../src/Switch';
+import '../src/Switch.js';
 
 const onChange = jest.fn<void, [ChangeEvent]>();
 

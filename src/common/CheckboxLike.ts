@@ -1,4 +1,4 @@
-import { Clickable, type ClickableProps } from './Clickable';
+import { Clickable, type ClickableProps } from './Clickable.js';
 
 type CheckedState = boolean | 'mixed';
 

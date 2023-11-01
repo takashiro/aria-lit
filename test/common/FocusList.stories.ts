@@ -4,7 +4,7 @@ import { expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { FocusListProps } from '../../src/common/FocusList';
-import '../../src/common/FocusList';
+import '../../src/common/FocusList.js';
 
 const meta: Meta<FocusListProps> = {
 	title: 'Keyboard/FocusList',
@@ -12,7 +12,7 @@ const meta: Meta<FocusListProps> = {
 	render: ({ circular, orientation }) => html`
 		<button type="button">Before</button>
 		<hr>
-		<cindi-focuslist .selector="button" .circular=${circular} .orientation=${orientation}>
+		<cindi-focuslist .selector=${'button'} .circular=${circular} .orientation=${orientation}>
 				<button type="button" tabindex="-1">A</button>
 				<button type="button" tabindex="-1">B</button>
 				<button type="button" tabindex="-1">C</button>

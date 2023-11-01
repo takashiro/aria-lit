@@ -6,8 +6,8 @@ import {
 } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
-import './Button';
-import createId from './dom/createId';
+import './Button.js';
+import createId from './dom/createId.js';
 
 export interface ToggleEventInit {
 	/**

@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { RadioGroupProps, ChangeEvent } from '../src/RadioGroup';
-import '../src/RadioGroup';
+import '../src/RadioGroup.js';
 
 const onChange = jest.fn<void, [ChangeEvent<number>]>();
 

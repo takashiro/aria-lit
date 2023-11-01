@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import { Clickable } from './common/Clickable';
+import { Clickable } from './common/Clickable.js';
 
 /**
  * **Important**: For normal buttons, please use `<button>` instead.
@@ -23,7 +23,7 @@ export {
 	type ClickableProps as ButtonProps,
 	type TriggerEvent,
 	type TriggerEventHandler,
-} from './common/Clickable';
+} from './common/Clickable.js';
 
 export default Button;
 

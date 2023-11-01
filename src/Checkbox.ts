@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import CheckboxLike from './common/CheckboxLike';
+import CheckboxLike from './common/CheckboxLike.js';
 
 /**
  * [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
@@ -18,7 +18,7 @@ export type {
 	CheckboxLikeProps as CheckboxProps,
 	ChangeEvent,
 	ChangeEventHandler,
-} from './common/CheckboxLike';
+} from './common/CheckboxLike.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

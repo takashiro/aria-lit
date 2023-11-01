@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import CheckboxLike from './common/CheckboxLike';
+import CheckboxLike from './common/CheckboxLike.js';
 
 /**
  * [Switch](https://www.w3.org/WAI/ARIA/apg/patterns/switch/)
@@ -18,7 +18,7 @@ export type {
 	CheckboxLikeProps as SwitchProps,
 	ChangeEvent,
 	ChangeEventHandler,
-} from './common/CheckboxLike';
+} from './common/CheckboxLike.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

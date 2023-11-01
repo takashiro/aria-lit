@@ -4,7 +4,7 @@ import { expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { TooltipProps } from '../src/Tooltip';
-import '../src/Tooltip';
+import '../src/Tooltip.js';
 
 import './Tooltip.scss';
 

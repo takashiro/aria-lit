@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import findElements from '../dom/findElements';
+import findElements from '../dom/findElements.js';
 
 type Orientation = 'portrait' | 'landscape';
 

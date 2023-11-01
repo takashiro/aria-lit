@@ -1,7 +1,7 @@
 import { customElement } from 'lit/decorators.js';
 
-import FocusList from './common/FocusList';
-import { Radio } from './Radio';
+import FocusList from './common/FocusList.js';
+import { Radio } from './Radio.js';
 
 export interface ChangeEventInit<T> {
 	/**
@@ -98,7 +98,7 @@ export class RadioGroup<T> extends FocusList implements RadioGroupProps<T> {
 
 export default RadioGroup;
 
-export { Radio } from './Radio';
+export { Radio } from './Radio.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

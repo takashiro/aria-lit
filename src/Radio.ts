@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import Clickable from './common/Clickable';
+import Clickable from './common/Clickable.js';
 
 export interface RadioProps<T> {
 	/**

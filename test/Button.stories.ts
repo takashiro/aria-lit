@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { ButtonProps, TriggerEvent, TriggerEventHandler } from '../src/Button';
-import '../src/Button';
+import '../src/Button.js';
 import './Button.scss';
 
 let count = 0;

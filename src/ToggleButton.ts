@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import Button, { type ButtonProps } from './Button';
+import Button, { type ButtonProps } from './Button.js';
 
 type PressedState = boolean | 'mixed';
 

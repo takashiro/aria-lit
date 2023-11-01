@@ -4,7 +4,7 @@ import { jest, expect } from '@storybook/jest';
 import { html } from 'lit/html.js';
 
 import type { DisclosureProps, ToggleEvent } from '../src/Disclosure';
-import '../src/Disclosure';
+import '../src/Disclosure.js';
 
 const onChange = jest.fn<void, [ToggleEvent]>();
 

@@ -10,10 +10,11 @@
 		"strict": true,
     "experimentalDecorators": true,
 		"useDefineForClassFields": false,
+		"forceConsistentCasingInFileNames": true,
 		"plugins": [
       {
         "name": "ts-lit-plugin",
-        "strict": true,
+        "strict": true
 			}
 		]
 	},
