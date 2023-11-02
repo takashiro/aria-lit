@@ -25,10 +25,7 @@ module.exports = {
 			'always',
 		],
 		'import/no-unresolved': 'off',
-		indent: [
-			'error',
-			'tab',
-		],
+		indent: 'off',
 		'linebreak-style': 'off',
 		'no-await-in-loop': 'off',
 		'no-plusplus': 'off',

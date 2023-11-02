@@ -1,11 +1,52 @@
+.tooltip-canvas {
+	width: 400px;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 cindi-tooltip {
 	display: none;
-	border: gray 1px solid;
-	border-radius: 4px;
+	box-shadow: lightblue 0 0 20px 2px;
+	border-radius: 9px;
 	position: fixed;
 	padding: 0.5em 1em;
 
 	&[data-state="open"] {
 		display: block;
+	}
+
+	.arrow {
+		position: absolute;
+		color: white;
+		width: 14px;
+		height: 7px;
+	}
+
+	&[side="top"] .arrow {
+		bottom: -6px;
+		left: calc(50% - 7px);
+	}
+
+	&[side="bottom"] .arrow {
+		top: 1px;
+		left: calc(50% - 7px);
+		transform-origin: top center;
+		transform: rotate(180deg);
+	}
+
+	&[side="left"] .arrow {
+		top: 50%;
+		right: -6px;
+		transform-origin: top center;
+		transform: rotate(-90deg);
+	}
+
+	&[side="right"] .arrow {
+		top: 50%;
+		left: -6px;
+		transform-origin: top center;
+		transform: rotate(90deg);
 	}
 }

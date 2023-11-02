@@ -1,4 +1,10 @@
-import { customElement } from 'lit/decorators.js';
+import { LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import {
+	Coordinate,
+	Side,
+	popOver,
+} from './dom/popOver.js';
 
 export interface TooltipProps {
 	/**
@@ -7,6 +13,11 @@ export interface TooltipProps {
 	 * (Default: previous element of the tooltip)
 	 */
 	trigger?: Element;
+
+	/**
+	 * Position of the tooltip (relative to its trigger).
+	 */
+	side?: Side;
 }
 
 /**
@@ -21,25 +32,39 @@ export interface TooltipProps {
  * focusable elements can be made using a non-modal dialog.
  */
 @customElement('cindi-tooltip')
-export default class Tooltip extends HTMLElement implements TooltipProps {
+export default class Tooltip extends LitElement implements TooltipProps {
 	trigger?: HTMLElement;
 
-	connectedCallback(): void {
-		if (!this.role) {
-			this.role = 'tooltip';
-		}
+	@property({ type: String }) side?: Side;
 
+	offset = 0;
+
+	protected override createRenderRoot(): HTMLElement {
+		return this;
+	}
+
+	override connectedCallback(): void {
 		const trigger = this.#getTrigger();
 		if (trigger) {
 			this.#addEventListeners(trigger);
 		}
+		super.connectedCallback();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
+		super.disconnectedCallback();
 		const trigger = this.#getTrigger();
 		if (trigger) {
 			this.#removeEventListeners(trigger);
 		}
+	}
+
+	moveTo(pos: Coordinate): void {
+		const rect = this.getBoundingClientRect();
+		const deltaX = pos.x - rect.left;
+		const deltaY = pos.y - rect.top;
+		this.style.top = `${deltaY}px`;
+		this.style.left = `${deltaX}px`;
 	}
 
 	#addEventListeners(trigger: HTMLElement): void {
@@ -62,12 +87,28 @@ export default class Tooltip extends HTMLElement implements TooltipProps {
 		return this.trigger ?? this.previousElementSibling as HTMLElement;
 	}
 
-	#show = (): void => {
+	#show = (e: Event): void => {
+		this.style.position = 'fixed';
 		this.dataset.state = 'open';
+		this.style.top = '0';
+		this.style.left = '0';
+		this.style.transform = 'translateX(-200%)';
+
+		const trigger = e.currentTarget as HTMLElement;
+		const triggerRect = trigger.getBoundingClientRect();
+		const tooltipRect = this.getBoundingClientRect();
+
+		const pos: Coordinate = popOver(triggerRect, tooltipRect, {
+			side: this.side,
+			offset: this.offset,
+		});
+		this.role = 'tooltip';
+		this.moveTo(pos);
 	}
 
 	#hide = (): void => {
 		delete this.dataset.state;
+		this.role = null;
 	}
 
 	#handleKeyDown = (e: KeyboardEvent): void => {
@@ -86,3 +127,5 @@ declare global {
 		'cindi-tooltip': Tooltip;
 	}
 }
+
+export type { Side, Coordinate } from './dom/popOver.js';
